@@ -31,7 +31,7 @@ html body{
     background: #fff;
     border-radius: 10px;
     padding: 1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
     margin-bottom: 1rem;
     min-height: 10vh;
     border-left: 8px solid green;
@@ -40,6 +40,7 @@ html body{
 .card-2 p{
     margin: 0;
 }
+
 
 
 
