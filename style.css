@@ -14,7 +14,7 @@
 
 .home-card:hover{
     border-bottom: 15px solid #005c00;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     transition: all 0.2s ease 0s;
 }
 
