@@ -87,11 +87,14 @@
                                     <label for="floatingInput">Today <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-12 mt-1">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="designation" name="designation" required>
-                                    <label for="floatingInput">Designation <span class="text-danger">*</span></label>
-                                </div>
+                            <div class="col-md-12 mt-1 mb-3">
+                                <select class="form-select mt-3" required>
+                                    <option selected disabled value="">Designation</option>
+                                    <option value="prof">Professor</option>
+                                    <option value="assoprof">Associate Professor</option>
+                                    <option value="assiprof">Assistant Professor</option>
+                                    <option value="lect">Lecturer</option>
+                                </select>
                             </div>
                             
                             <div class="col-md-12 mt-1">
