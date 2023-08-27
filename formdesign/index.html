@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-12 sh-up">
                 <div class="sh-hd">
-                    <p>IUT Library</p>
+                    <p>Book A New Meeting</p>
                 </div>
             </div>
         </div>
@@ -53,9 +53,15 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-12 tr-frhd mt-5">
+            <div class="col-md-3 col-6 d-flex justify-content-center align-items-center mt-5">
+                <img src="../iutlogo/IUTLogo.png" style="width: 70px;" class="logo">
+            </div>
+            <div class="col-12 col-md-6 tr-frhd mt-5">
                 <h2>Read the instructions Carefully</2>
                 <h5><span class="text-danger">*</span> Fields Are Required</h5>
+            </div>
+            <div class="col-md-3 col-6 d-flex justify-content-center align-items-center mt-5">
+                <img src="../iutlogo/OICLogo.png" style="width: 70px;" class="logo">
             </div>
         </div>
         <div class="row">
@@ -91,27 +97,27 @@
                                     <label for="floatingInput">Detail Purpose (Official Meeting Only) <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-4 mt-1">
+                            <div class="col-md-6 mt-1">
                                 <div class="form-floating mb-3">
                                     <input type="date" class="form-control" id="floatingInput" placeholder="bookingday" name="bookingday" required>
                                     <label for="floatingInput">Date of Booking <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-2 mt-1">
+                            <div class="col-md-3 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="time" class="form-control" id="floatingInput" placeholder="timefrom" name="timefrom" required>
+                                    <input type="time" class="form-control tf" id="floatingInput" placeholder="timefrom" name="timefrom" required>
                                     <label for="floatingInput">Time From <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-2 mt-1">
+                            <div class="col-md-3 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="time" class="form-control" id="floatingInput" placeholder="timeto" name="timeto" required>
+                                    <input type="time" class="form-control tt" id="floatingInput" placeholder="timeto" name="timeto" required>
                                     <label for="floatingInput">Time To <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-4 mt-1">
+                            <div class="col-md-12 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="duration" name="duration" required>
+                                    <input type="text" class="form-control td" id="floatingInput" placeholder="duration" name="duration" required readonly>
                                     <label for="floatingInput">Duration of the Event <span class="text-danger">*</span> (hh:mm)</label>
                                 </div>
                             </div>
@@ -254,32 +260,9 @@
                             
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12 mt-5">
-                                <h4>Proof of your CRship</h4>
-                                <p class="text-secondary" style="text-align: justify;">You have to provide a proof of your studentship. 
-                                    Please provide a valid proof of your CRship / studentship of that program / department. 
-                                    <span class="text-danger fw-bold"> Both side of your university ID card</span>
-                                    or anything that shows your name, department, program, university name and your ID number will be accepted.
-                                </p>
-                            </div>
-                            <div class="col-md-12 mt-2">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="proof_link" name="proof_link" required>
-                                    <label for="floatingInput">Google Drive Link <span class="text-danger">*</span></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 mt-5">
-                                <p class="text-secondary" style="text-align: justify;">By clicking 
-                                    <span class="text-success fw-bold">Register Button</span> You are agreeing to our 
-                                    <a href="../../static/privacy/" class="text-decoration-none" target="_blank">Privacy Policy</a>.
-                                    
-                                </p>
-                            </div>
+                        <div class="row mt-5">
                             <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-success sh-search" style="width: 100%;">Register</button>
+                                <button id="submit" type="submit" class="btn btn-success sh-search" style="width: 100%;">Submit Booking Request</button>
                             </div> 
                         </div>
                         
@@ -289,7 +272,33 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-4.5.2/dist/js/bootstrap.min.js"></script> -->
+    <script>
+        $(document).ready(function() {
+            $('.tt, .tf').on('change', function() {
+                var tfVal = $('.tf').val();
+                var ttVal = $('.tt').val();
 
+                if (tfVal && ttVal) {
+                    var tf = new Date('2000-01-01 ' + tfVal);
+                    var tt = new Date('2000-01-01 ' + ttVal);
+
+                    if (tt < tf) {
+                        $('.td').val('Selection is invalid');
+                    } else {
+                        var diffInMillis = tt - tf;
+                        var hours = Math.floor(diffInMillis / 3600000);
+                        var minutes = Math.floor((diffInMillis % 3600000) / 60000);
+
+                        $('.td').val(hours + ' hours ' + minutes + ' minutes');
+                    }
+                } else {
+                    $('.td').val('');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
