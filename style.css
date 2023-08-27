@@ -1,0 +1,53 @@
+.home-card{
+    background: #fff;
+    border-radius: 5px;
+    padding: 3rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+    min-height: 10vh;
+    transition: all 0.2s ease 0s;
+}
+.login-card{
+    background: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    /* margin-bottom: 1rem; */
+    min-height: 10vh;
+    transition: all 0.2s ease 0s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sh-login{
+    margin: 0;
+    padding: 0;
+}
+
+.home-card p{
+    margin: 0;
+}
+
+.home-card:hover{
+    border-left: 15px solid #005c00;
+    /* transform: scale(1.1); */
+    transition: all 0.2s ease 0s;
+}
+
+.box-card{
+    background: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+    min-height: 5vh;
+    border-left: 4px solid #007bff;
+    transition: all 0.3s ease 0s;
+}
+
+.box-card:hover{
+    border-left: 25px solid #2d537c;
+    transition: all 0.2s ease 0s;
+}

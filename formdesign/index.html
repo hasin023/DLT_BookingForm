@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-12 sh-up">
                 <div class="sh-hd">
-                    <p>IUT Library</p>
+                    <p>Book A New Meeting</p>
                 </div>
             </div>
         </div>
@@ -53,9 +53,18 @@
             </div>
         </div> -->
         <div class="row">
-            <div class="col-12 tr-frhd mt-5">
-                <h2>Read the instructions Carefully</2>
-                <h5><span class="text-danger">*</span> Fields Are Required</h5>
+            <div class="col-md-3 col-6 d-flex justify-content-center align-items-center mt-5">
+                <img src="../iutlogo/IUTLogo.png" style="width: 70px;" class="logo">
+            </div>
+            <div class="col-12 col-md-6 tr-frhd mt-5">
+                <h2>Islamic University of Technology</h2>
+                <h4>Library and Documentation Office</h4>
+                <h5>Distance Learning Theatre (DLT) Booking Form</h5>
+                <h6><span class="text-danger">*</span> Fields Are Required</h6>
+                <hr>
+            </div>
+            <div class="col-md-3 col-6 d-flex justify-content-center align-items-center mt-5">
+                <img src="../iutlogo/OICLogo.png" style="width: 90px;" class="logo">
             </div>
         </div>
         <div class="row">
@@ -74,51 +83,54 @@
                             </div>
                             <div class="col-md-4 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="date" class="form-control" id="floatingInput" placeholder="today" name="today" required>
+                                    <input type="date" class="form-control today" id="floatingInput" placeholder="today" name="today" required>
                                     <label for="floatingInput">Today <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-12 mt-1">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="designation" name="designation" required>
-                                    <label for="floatingInput">Designation <span class="text-danger">*</span></label>
-                                </div>
+                            <div class="col-md-12 mt-1 mb-3">
+                                <select class="form-select mt-3" required>
+                                    <option selected disabled value="">Designation</option>
+                                    <option value="prof">Professor</option>
+                                    <option value="assoprof">Associate Professor</option>
+                                    <option value="assiprof">Assistant Professor</option>
+                                    <option value="lect">Lecturer</option>
+                                </select>
                             </div>
                             
                             <div class="col-md-12 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="purpose" name="purpose" required>
-                                    <label for="floatingInput">Detail Purpose (Official Meeting Only) <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="floatingTextarea" placeholder="purpose" name="purpose" required></textarea>
+                                    <label for="floatingTextarea">Detail Purpose (Official Meeting Only) <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-4 mt-1">
+                            <div class="col-md-6 mt-1">
                                 <div class="form-floating mb-3">
                                     <input type="date" class="form-control" id="floatingInput" placeholder="bookingday" name="bookingday" required>
                                     <label for="floatingInput">Date of Booking <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-2 mt-1">
+                            <div class="col-md-3 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="time" class="form-control" id="floatingInput" placeholder="timefrom" name="timefrom" required>
+                                    <input type="time" class="form-control tf" id="floatingInput" placeholder="timefrom" name="timefrom" required>
                                     <label for="floatingInput">Time From <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-2 mt-1">
+                            <div class="col-md-3 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="time" class="form-control" id="floatingInput" placeholder="timeto" name="timeto" required>
+                                    <input type="time" class="form-control tt" id="floatingInput" placeholder="timeto" name="timeto" required>
                                     <label for="floatingInput">Time To <span class="text-danger">*</span></label>
                                 </div>
                             </div>
-                            <div class="col-md-4 mt-1">
+                            <div class="col-md-12 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="duration" name="duration" required>
+                                    <input type="text" class="form-control td" id="floatingInput" placeholder="duration" name="duration" required readonly>
                                     <label for="floatingInput">Duration of the Event <span class="text-danger">*</span> (hh:mm)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 mt-5 mb-2">
-                                <h4>Technical Support (From ICT Center)</h4>
+                                <h4>Technical Support (From ICT Center)<span class="text-danger">*</span></h4>
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
@@ -175,7 +187,7 @@
 
                         <div class="row">
                             <div class="col-md-12 mt-5 mb-2">
-                                <h4> Logistics Support (From Engineering Office)</h4>
+                                <h4> Logistics Support (From Engineering Office)<span class="text-danger">*</span></h4>
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
@@ -216,7 +228,7 @@
 
                         <div class="row">
                             <div class="col-md-12 mt-5 mb-2">
-                                <h4> Official Coverage</h4>
+                                <h4>Official Coverage</h4>
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
@@ -251,25 +263,38 @@
                             <h5 class="warning mt-2" style="font-style: italic;">N.B.: Food and Beverages are not allowed inside the DLT Room.</h5>
                         </div>
                         <div class="row">
-                            
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 mt-5">
-                                <h4>Proof of your CRship</h4>
-                                <p class="text-secondary" style="text-align: justify;">You have to provide a proof of your studentship. 
-                                    Please provide a valid proof of your CRship / studentship of that program / department. 
-                                    <span class="text-danger fw-bold"> Both side of your university ID card</span>
-                                    or anything that shows your name, department, program, university name and your ID number will be accepted.
-                                </p>
-                            </div>
-                            <div class="col-md-12 mt-2">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="proof_link" name="proof_link" required>
-                                    <label for="floatingInput">Google Drive Link <span class="text-danger">*</span></label>
+                            <div class="col-md-6 mt-1">
+                                <p class="signature" style="font-size: 18px;">Applicant Signature: </p>
+                                <div class="form mb-3">
+                                    <input type="file" class="form-control" id="floatingInput" placeholder="asignature" name="asignature" required>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 mt-5 mb-2">
+                                <h4> Head/Chairman Section</h4>
+                            </div>
+                            <div class="col-md-8 mt-1">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="hcname" name="hcname" required>
+                                    <label for="floatingInput">Name (Head/Chairman): <span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-1">
+                                <div class="form-floating mb-3">
+                                    <input type="date" class="form-control" id="floatingInput" placeholder="signday" name="signday" required>
+                                    <label for="floatingInput">Signature date <span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-1">
+                                <p class="signature" style="font-size: 18px;">Signature: </p>
+                                <div class="form mb-3">
+                                    <input type="file" class="form-control" id="floatingInput" placeholder="asignature" name="asignature" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        
                         <div class="row">
                             <div class="col-md-12 mt-5">
                                 <p class="text-secondary" style="text-align: justify;">By clicking 
@@ -279,7 +304,7 @@
                                 </p>
                             </div>
                             <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-success sh-search" style="width: 100%;">Register</button>
+                                <button id="submit" type="submit" class="btn btn-success sh-search" style="width: 100%;">Submit Booking Request</button>
                             </div> 
                         </div>
                         
@@ -289,7 +314,48 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-4.5.2/dist/js/bootstrap.min.js"></script> -->
+    <script>
+        $(document).ready(function() {
+            $('.tt, .tf').on('change', function() {
+                var tfVal = $('.tf').val();
+                var ttVal = $('.tt').val();
 
+                if (tfVal && ttVal) {
+                    var tf = new Date('2000-01-01 ' + tfVal);
+                    var tt = new Date('2000-01-01 ' + ttVal);
+
+                    if (tt < tf) {
+                        $('.td').val('Selection is invalid');
+                    } else {
+                        var diffInMillis = tt - tf;
+                        var hours = Math.floor(diffInMillis / 3600000);
+                        var minutes = Math.floor((diffInMillis % 3600000) / 60000);
+
+                        $('.td').val(hours + ' hours ' + minutes + ' minutes');
+                    }
+                } else {
+                    $('.td').val('');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Get the input element by its ID
+        // Get the input element with the "today" class
+        var inputElement = document.querySelector(".today");
+
+        // Get the current date in YYYY-MM-DD format
+        var currentDate = new Date().toISOString().slice(0, 10);
+
+        // Set the value of the input element to the current date
+        inputElement.value = currentDate;
+
+        // Make the input element read-only
+        inputElement.setAttribute("readonly", "readonly");
+    </script>
 
 </body>
 </html>
