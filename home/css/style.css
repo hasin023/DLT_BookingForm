@@ -1,0 +1,73 @@
+*{
+    font-family: "poppins", sans-serif;
+    margin: 0;
+
+
+}
+.home{
+    height: 100vh;
+    background-color:white
+}
+
+
+
+.image img{
+    width: 13vh;
+    cursor: pointer;
+    margin-top: 15px;
+    
+
+}
+
+.speacer-40{
+    height: 40px;
+ }
+ .intro{
+  
+    display: flex;
+    margin-top: 120px; 
+    
+    
+
+ }
+ .image-2{
+    align-items: center;
+    filter: drop-shadow(5px 5px 10px gray);
+    margin-left: 30px;
+    margin-top: 15px;
+    
+ }
+ .image-2 img{
+       width: 250px;
+       align-items: center;
+       margin-top: 20px;
+ }
+ 
+ .speech h3{
+    height: 100px;
+    font-family: "poppins", sans-serif;
+    font-size: 20px;
+    margin-top: 15px;
+    align-items: center;
+    border-radius: 10px;
+ }
+ .image-3{
+    align-items: center;
+    display: flex;
+    margin-top: 150px;
+    margin-left: 60px;
+ }
+ .facilities h1{
+     text-align: center;
+     display: grid;
+     margin-top: 20px;
+     cursor: pointer;
+ }
+ .facilities ul li{
+    margin-left: 30px;
+    list-style: url(../image/check-circle\ \(2\).svg);
+    font-size: 20px;
+    margin-top: 10px;
+    align-items: center;
+    cursor: pointer;
+ }
