@@ -8,30 +8,34 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Department</th>
+                        <th class="text-center">Position</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Office</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td class="text-center">John Doe</td>
+                        <td class="text-center">Computer Science</td>
+                        <td class="text-center">Professor</td>
+                        <td class="text-center">john.doe@example.com</td>
+                        <td class="text-center">123 Main St, Room 101</td>
                     </tr>
                     <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
+                        <td class="text-center">Jane Smith</td>
+                        <td class="text-center">Mathematics</td>
+                        <td class="text-center">Associate Professor</td>
+                        <td class="text-center">jane.smith@example.com</td>
+                        <td class="text-center">456 Elm Ave, Room 202</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Michael Johnson</td>
+                        <td class="text-center">Physics</td>
+                        <td class="text-center">Assistant Professor</td>
+                        <td class="text-center">michael.johnson@example.com</td>
+                        <td class="text-center">789 Oak Rd, Room 303</td>
                     </tr>
                 </tbody>
             </table>

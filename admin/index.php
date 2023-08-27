@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <a href="posts.php" class="btn btn-success " style=" width: 7.4rem; margin-left: 8rem;">View Details</a>
+                                    <a href="faculty.php" class="btn btn-success " style=" width: 7.4rem; margin-left: 8rem;">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <a href="posts.php" class="btn btn-warning " style=" width: 7.4rem; margin-left: 8rem;">View Details</a>
+                                    <a href="meetings.php" class="btn btn-warning " style=" width: 7.4rem; margin-left: 8rem;">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <a href="posts.php" class="btn btn-info " style=" width: 7.4rem; margin-left: 8rem;">View Details</a>
+                                    <a href="meetings.php?source=pending_requests" class="btn btn-info " style=" width: 7.4rem; margin-left: 8rem;">View Details</a>
                                 </div>
                             </div>
                         </div>
