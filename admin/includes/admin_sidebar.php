@@ -3,7 +3,8 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon">
-            <img style="width: 35px; height: auto;" src="../iutlogo/IUTLogo.png"/>
+            <!-- <i class="fas fa-fw fa-lock"></i> -->
+            <!-- <img style="width: 35px; height: auto;" src="../iutlogo/IUTLogo.png"/> -->
         </div>
         <div class="sidebar-brand-text mx-3">Admin</div>
     </a>
@@ -35,7 +36,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="meetings.php?source=add_meeting">Add Meeting</a>
+                <!-- <a class="collapse-item" href="meetings.php?source=add_meeting">Add Meeting</a> -->
                 <a class="collapse-item" href="meetings.php">View Meetings</a>
             </div>
         </div>

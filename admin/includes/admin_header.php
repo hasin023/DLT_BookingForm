@@ -23,6 +23,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/admin.min.css" rel="stylesheet">
+    <link href="css/customCss.css" rel="stylesheet">
 
 </head>
 

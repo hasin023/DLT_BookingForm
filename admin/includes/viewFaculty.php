@@ -10,7 +10,7 @@
                     <tr>
                         <th class="text-center">Name</th>
                         <th class="text-center">Department</th>
-                        <th class="text-center">Position</th>
+                        <th class="text-center">Designation</th>
                         <th class="text-center">Email</th>
                         <th class="text-center">Office</th>
                     </tr>
