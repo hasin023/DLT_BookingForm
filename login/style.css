@@ -1,0 +1,20 @@
+.sh-login-sec{
+    min-height: 87vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-2{
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin-bottom: 1rem;
+    min-height: 10vh;
+}
+
+.card-2 p{
+    margin: 0;
+}
