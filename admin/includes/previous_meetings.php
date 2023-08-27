@@ -8,30 +8,30 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Designation</th>
+                        <th class="text-center">Members</th>
+                        <th class="text-center">Booking date</th>
+                        <th class="text-center">Time</th>
+                        <th class="text-center">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td class="text-center">Tiger Nixon</td>
+                        <td class="text-center">System Architect</td>
+                        <td class="text-center">20</td>
+                        <td class="text-center">2011/04/25</td>
+                        <td class="text-center">11:00 AM</td>
+                        <td class="text-center">Ended</td>
                     </tr>
                     <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
+                        <td class="text-center">Garrett Winters</td>
+                        <td class="text-center">Accountant</td>
+                        <td class="text-center">20</td>
+                        <td class="text-center">2011/07/25</td>
+                        <td class="text-center">2:30 PM</td>
+                        <td class="text-center">Ended</td>
                     </tr>
                 </tbody>
             </table>
