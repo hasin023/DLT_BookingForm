@@ -1,0 +1,22 @@
+.home-card{
+    background: #fff;
+    border-radius: 5px;
+    padding: 3rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+    min-height: 10vh;
+}
+
+.home-card p{
+    margin: 0;
+}
+
+.box-card{
+    background: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+    min-height: 5vh;
+    border-left: 4px solid #007bff;
+}
