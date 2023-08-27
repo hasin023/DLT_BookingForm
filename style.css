@@ -7,13 +7,31 @@
     min-height: 10vh;
     transition: all 0.2s ease 0s;
 }
+.login-card{
+    background: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    /* margin-bottom: 1rem; */
+    min-height: 10vh;
+    transition: all 0.2s ease 0s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sh-login{
+    margin: 0;
+    padding: 0;
+}
 
 .home-card p{
     margin: 0;
 }
 
 .home-card:hover{
-    border-bottom: 15px solid #005c00;
+    border-left: 15px solid #005c00;
     /* transform: scale(1.1); */
     transition: all 0.2s ease 0s;
 }
