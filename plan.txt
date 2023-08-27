@@ -1,0 +1,16 @@
+Page List:
+    1. Public pages:
+        a. Home page (Takia)
+        b. Login page - username (Done by Shuvro)
+        c. Calender Page (Shuvro)
+
+    2. Faculty Pages:
+        a. Dashboard with History (Shuvro)
+        b. Form page (Rayshad)
+    
+    3. Admin Pages: (Alvee)
+        a. Dashboard
+        b. Meeting Details
+        c. History Page
+        d. Faculty Details
+        e. Faculty Edit / New
