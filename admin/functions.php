@@ -17,6 +17,156 @@ function confirmQuery($result)
     }
 }
 
+function generateMeetingId($date, $time, $participants)
+{
+    $date = str_replace("-", "", $date);
+    $time = str_replace(":", "", $time);
+    $participants = str_replace(" ", "", $participants);
+
+    $meeting_id = $date . $time . $participants;
+
+    return $meeting_id;
+}
+
+
+function isPreviousMeeting($inputDate)
+{
+    $inputTimestamp = strtotime($inputDate);
+
+    $currentTimestamp = time();
+
+    if ($inputTimestamp === false) {
+        return;
+    } elseif ($inputTimestamp < $currentTimestamp) {
+        return true;
+    } elseif ($inputTimestamp > $currentTimestamp) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function getAllMeetings()
+{
+    global $connection;
+
+    $query = "SELECT * FROM meetings";
+    $select_meetings = mysqli_query($connection, $query);
+
+    while ($row = mysqli_fetch_assoc($select_meetings)) {
+        $id = escape($row['id']);
+        $applicant_name = escape($row['applicant_name']);
+        $applicant_designation = escape($row['designation']);
+        $participants = escape($row['participants']);
+        $meeting_date = escape($row['meeting_date']);
+        $start_time = escape($row['start_time']);
+        $meeting_status = escape($row['meeting_status']);
+        $meeting_id = generateMeetingId($meeting_date, $start_time, $participants);
+
+        $isPreviousMeeting = isPreviousMeeting($meeting_date);
+
+        if ($isPreviousMeeting) {
+            $meeting_status = "completed";
+
+            echo "<tr>
+            <td class='text-dark text-center'>$meeting_id</td>
+            <td class='text-dark text-center'>$applicant_name</td>
+            <td class='text-dark text-center'>$applicant_designation</td>
+            <td class='text-dark text-center'>$participants</td>
+            <td class='text-dark text-center'>$meeting_date</td>
+            <td class='text-dark text-center'>$start_time</td>
+            <td class='text-dark text-center'>$meeting_status</td>
+            <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
+          </tr>";
+        } else {
+            echo "<tr>
+            <td class='text-dark text-center'>$meeting_id</td>
+            <td class='text-dark text-center'>$applicant_name</td>
+            <td class='text-dark text-center'>$applicant_designation</td>
+            <td class='text-dark text-center'>$participants</td>
+            <td class='text-dark text-center'>$meeting_date</td>
+            <td class='text-dark text-center'>$start_time</td>
+            <td class='text-dark text-center'>$meeting_status</td>
+            <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
+          </tr>";
+        }
+
+    }
+
+}
+
+
+function getPendingMeetings()
+{
+    global $connection;
+
+    $query = "SELECT * FROM meetings WHERE meeting_status = 'pending'";
+    $select_meetings = mysqli_query($connection, $query);
+
+    while ($row = mysqli_fetch_assoc($select_meetings)) {
+        $id = escape($row['id']);
+        $applicant_name = escape($row['applicant_name']);
+        $applicant_designation = escape($row['designation']);
+        $participants = escape($row['participants']);
+        $meeting_date = escape($row['meeting_date']);
+        $start_time = escape($row['start_time']);
+        $meeting_status = escape($row['meeting_status']);
+        $meeting_id = generateMeetingId($meeting_date, $start_time, $participants);
+
+        echo "<tr>
+            <td class='text-dark text-center'>$meeting_id</td>
+            <td class='text-dark text-center'>$applicant_name</td>
+            <td class='text-dark text-center'>$applicant_designation</td>
+            <td class='text-dark text-center'>$participants</td>
+            <td class='text-dark text-center'>$meeting_date</td>
+            <td class='text-dark text-center'>$start_time</td>
+            <td class='text-dark text-center'>$meeting_status</td>
+            <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
+          </tr>";
+
+    }
+
+}
+
+
+function getPreviousMeetings()
+{
+    global $connection;
+
+    $query = "SELECT * FROM meetings WHERE meeting_status = 'approved'";
+    $select_meetings = mysqli_query($connection, $query);
+
+    while ($row = mysqli_fetch_assoc($select_meetings)) {
+        $id = escape($row['id']);
+        $applicant_name = escape($row['applicant_name']);
+        $applicant_designation = escape($row['designation']);
+        $participants = escape($row['participants']);
+        $meeting_date = escape($row['meeting_date']);
+        $start_time = escape($row['start_time']);
+        $meeting_status = escape($row['meeting_status']);
+        $meeting_id = generateMeetingId($meeting_date, $start_time, $participants);
+
+        $isPreviousMeeting = isPreviousMeeting($meeting_date);
+
+        if ($isPreviousMeeting) {
+            $meeting_status = "completed";
+
+            echo "<tr>
+            <td class='text-dark text-center'>$meeting_id</td>
+            <td class='text-dark text-center'>$applicant_name</td>
+            <td class='text-dark text-center'>$applicant_designation</td>
+            <td class='text-dark text-center'>$participants</td>
+            <td class='text-dark text-center'>$meeting_date</td>
+            <td class='text-dark text-center'>$start_time</td>
+            <td class='text-dark text-center'>$meeting_status</td>
+            <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
+          </tr>";
+        }
+
+    }
+
+}
+
 
 function getAllFaculty()
 {
@@ -78,31 +228,6 @@ function updateFaculty($the_id)
         header("Location: faculty.php");
     }
 }
-
-// function users_online()
-// {
-//     global $connection;
-
-//     $session = session_id();
-//     $time = time();
-//     $time_out_in_seconds = 40;
-
-//     $time_out = $time - $time_out_in_seconds;
-
-//     $query = "SELECT * FROM users_online WHERE session = '$session'";
-//     $send_query = mysqli_query($connection, $query);
-//     $count = mysqli_num_rows($send_query);
-
-//     if ($count == NULL) {
-//         mysqli_query($connection, "INSERT INTO users_online(session, time) VALUES('$session', '$time')");
-//     } else {
-//         mysqli_query($connection, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
-//     }
-
-//     $users_online_query = mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$time_out'");
-//     return mysqli_num_rows($users_online_query);
-
-// }
 
 
 ?>
