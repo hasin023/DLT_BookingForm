@@ -42,18 +42,18 @@
         </div>
     </li>
 
-    <!-- Nav Item - Previous Meetings -->
-    <li class="nav-item">
-        <a class="nav-link" href="meetings.php?source=previous_meetings">
-            <i class="fas fa-fw fa-clock"></i>
-            <span>Previous Meetings</span></a>
-    </li>
-
     <!-- Nav Item - Pending Requests -->
     <li class="nav-item">
         <a class="nav-link" href="meetings.php?source=pending_requests">
             <i class="fas fa-fw fa-pen"></i>
             <span>Pending Requests</span></a>
+    </li>
+
+    <!-- Nav Item - Previous Meetings -->
+    <li class="nav-item">
+        <a class="nav-link" href="meetings.php?source=previous_meetings">
+            <i class="fas fa-fw fa-clock"></i>
+            <span>Previous Meetings</span></a>
     </li>
 
     <!-- Divider -->

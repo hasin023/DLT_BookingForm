@@ -1,46 +1,32 @@
-<!-- <form action="" method="post" enctype="multipart/form-data">
+<?php
 
-    <div class="form-group">
-        <input class="form-control bg-light border-1 small" type="text" name="user_firstname" placeholder="First Name">
-    </div>
+if (isset($_POST['add_faculty'])) {
+    $firstname = escape($_POST['firstname']);
+    $lastname = escape($_POST['lastname']);
+    $email = escape($_POST['email']);
+    $department = escape($_POST['dept']);
+    $designation = escape($_POST['designation']);
+    $role = escape($_POST['role']);
 
-    <div class="form-group">
-        <input class="form-control bg-light border-1 small" type="text" name="user_lastname" placeholder="Last Name">
-    </div>
+    $query = "INSERT INTO faculty(first_name, last_name, email, department, designation, role) ";
 
-    <div class="form-group">
-        <input class="form-control bg-light border-1 small" type="text" name="user_dept" placeholder="Department">
-    </div>
+    $query .= "VALUES('{$firstname}', '{$lastname}', '{$email}', '{$department}', '{$designation}', '{$role}') ";
 
-     <div class="form-group">
-        <select class="form-control bg-light border-1 small" type="text" name="user_role">
-            <option value="none">Select Designation</option>
-            <option value="admin">Professor</option>
-            <option value="subscriber">Associate Professor</option>
-            <option value="subscriber">Assistant Professor</option>
-            <option value="subscriber">Lecture</option>
-        </select>
-    </div>
+    $create_faculty_query = mysqli_query($connection, $query);
 
-    <div class="form-group">
-        <input class="form-control bg-light border-1 small" type="email" name="user_email" placeholder="Email">
-    </div>
+    confirmQuery($create_faculty_query);
 
-    <div class="form-group">
-        <i class="fas fa-fw fa-upload"></i>
-        <input class="inputfile" id="file" type="file" name="user_image">
-    </div>
+    echo "<p>Faculty has been added. <a href='faculty.php'>View Users</a></p>";
 
-    <div class="form-group">
-        <input class="btn btn-success" type="submit" name="create_user" value="Add User">
-    </div>
+}
 
-</form> -->
-<div class="container">
+?>
+
+    <div class="container">
         <div class="row">
             <div class="col-lg-8 col-12 offset-lg-2">
                 <div class="card">
-                <form class="requires-validation" action="process/facultyadd.php" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 mt-5 mb-2">
@@ -90,7 +76,7 @@
                         <div class="row">
                             
                             <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary sh-search" style="width: 100%;">Add Faculty</button>
+                                <input id="submit" name="add_faculty" type="submit" value="Add Faculty" class="btn btn-success sh-search" style="width: 100%;"></input>
                             </div> 
                         </div>
                     </div>
@@ -99,7 +85,6 @@
             </div>
         </div>
     </div>
-
 
 <style>
     .card{

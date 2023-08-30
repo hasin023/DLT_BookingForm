@@ -36,7 +36,17 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Faculty Members</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+
+                <?php
+
+                $query = "SELECT * FROM faculty";
+                $select_all_faculty = mysqli_query($connection, $query);
+                $faculty_counts = mysqli_num_rows($select_all_faculty);
+
+                echo "<div class='h5 mb-0 font-weight-bold text-gray-800'>{$faculty_counts}</div>";
+
+                ?>
+
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -48,26 +58,25 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        <!-- Meetings Card -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Meetings
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-warning" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Meetings</div>
+
+                <?php
+
+                $query = "SELECT * FROM meetings";
+                $select_all_meetings = mysqli_query($connection, $query);
+                $meeting_counts = mysqli_num_rows($select_all_meetings);
+
+                echo "<div class='h5 mb-0 font-weight-bold text-gray-800'>{$meeting_counts}</div>";
+
+                ?>
+
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -87,7 +96,17 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                                 Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+
+                <?php
+
+                $query = "SELECT * FROM meetings WHERE meeting_status = 'pending'";
+                $select_pending_meetings = mysqli_query($connection, $query);
+                $pending_counts = mysqli_num_rows($select_pending_meetings);
+
+                echo "<div class='h5 mb-0 font-weight-bold text-gray-800'>{$pending_counts}</div>";
+
+                ?>
+                
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
