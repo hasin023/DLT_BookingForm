@@ -17,12 +17,12 @@
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = ''; // Gmail address which you want to use as SMTP server
-        $mail->Password = ''; // Gmail application Password
+        $mail->Username = 'sakhawatadib@gmail.com'; // Gmail address which you want to use as SMTP server
+        $mail->Password = 'vxwbuoirvzrhdzek'; // Gmail application Password
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
-
-        $mail->setFrom(''); // Gmail address which you used as SMTP server
+        $mail->setFrom('sakhawatadib@gmail.com'); // Gmail address which you used as SMTP server
+        
         $mail->addAddress($_POST["email"]);
         $mail->isHTML(true);
         $mail->Subject = 'Your DLT Login OTP';
