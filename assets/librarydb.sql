@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2023 at 04:11 PM
+-- Generation Time: Aug 30, 2023 at 05:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -58,6 +58,7 @@ CREATE TABLE `meetings` (
   `application_date` date NOT NULL DEFAULT current_timestamp(),
   `participants` int(11) NOT NULL,
   `designation` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL,
   `details` text NOT NULL,
   `meeting_date` date NOT NULL,
   `start_time` time NOT NULL,
@@ -89,10 +90,10 @@ CREATE TABLE `meetings` (
 -- Dumping data for table `meetings`
 --
 
-INSERT INTO `meetings` (`id`, `applicant_name`, `application_date`, `participants`, `designation`, `details`, `meeting_date`, `start_time`, `end_time`, `ict_help_reason`, `other_support`, `pc`, `glass_board`, `mic_wireless`, `mic_wire`, `big_displays`, `wifi`, `add_projector`, `bdren`, `table_cloth`, `vase`, `wireless_mic_bat`, `add_chair`, `add_mic`, `other`, `photography`, `video_recording`, `cafe`, `own_arrange`, `meeting_status`) VALUES
-(1, 'sakhawatadib@gmail.com', '2023-08-30', 25, 'other', 'abcdef', '2023-08-31', '17:43:00', '19:41:00', 'None', 'None', 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 'None', 0, 1, 1, 0, 'pending'),
-(4, 'test@gmail.com', '2023-08-30', 12, 'other', 'New Test', '2023-09-06', '07:30:00', '11:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'approved'),
-(5, 'previoustest@gmail.com', '2023-08-25', 32, 'other', 'Previous Test', '2023-08-28', '04:30:00', '08:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'approved');
+INSERT INTO `meetings` (`id`, `applicant_name`, `application_date`, `participants`, `designation`, `role`, `details`, `meeting_date`, `start_time`, `end_time`, `ict_help_reason`, `other_support`, `pc`, `glass_board`, `mic_wireless`, `mic_wire`, `big_displays`, `wifi`, `add_projector`, `bdren`, `table_cloth`, `vase`, `wireless_mic_bat`, `add_chair`, `add_mic`, `other`, `photography`, `video_recording`, `cafe`, `own_arrange`, `meeting_status`) VALUES
+(1, 'sakhawatadib@gmail.com', '2023-08-30', 25, 'Student', 'other', 'abcdef', '2023-08-31', '17:43:00', '19:41:00', 'None', 'None', 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 'None', 0, 1, 1, 0, 'pending'),
+(4, 'test@gmail.com', '2023-08-30', 12, 'Lecturer', 'faculty', 'New Test', '2023-09-06', '07:30:00', '11:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'approved'),
+(5, 'previoustest@gmail.com', '2023-08-25', 32, 'Professor', 'head', 'Previous Test', '2023-08-28', '04:30:00', '08:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'approved');
 
 --
 -- Indexes for dumped tables
