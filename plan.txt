@@ -18,20 +18,29 @@ Page List:
 
 Meeting Table
 - ID (Auto generate)
-- Applicant (Varchar 128) - [store applican email_address]
+- Applicant (Varchar 128) - [store applicant email_address]
 - Application_date (Date Time)
 - Designation (Varchar 32)
 - Details (Text)
 - Booking_date(Date)
 - Time_from (Time)
 - Time_to (Time)
-- ict_help_reason (Text)
-- other_support (Text)
+- ict_help_reason (Text) - [can be null]
+- other_support (Text) - [can be null]
+
+- Pc (bool)
+- glass_board (bool)
+- mic_wireless (bool)
+- mic_wire (bool)
+- big_displays (bool)
+- wifi (bool)
+- add_projector (bool)
+- bdren (bool)
 
 
 - table_cloath (bool)
 - vase (bool)
-- wireless_mic (bool)
+- wireless_mic_bat (bool)
 - Add_chair (bool)
 - Add_mic (bool)
 - Other (Text)
@@ -39,5 +48,5 @@ Meeting Table
 - photography (bool)
 - video_recording (bool)
 
-- cafe  (bool)
+- cafe  (bool) (bool)
 - own_arange (bool)
