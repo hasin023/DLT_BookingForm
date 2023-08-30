@@ -14,3 +14,30 @@ Page List:
         c. History Page
         d. Faculty Details
         e. Faculty Edit / New
+
+
+Meeting Table
+- ID (Auto generate)
+- Applicant (Varchar 128) - [store applican email_address]
+- Application_date (Date Time)
+- Designation (Varchar 32)
+- Details (Text)
+- Booking_date(Date)
+- Time_from (Time)
+- Time_to (Time)
+- ict_help_reason (Text)
+- other_support (Text)
+
+
+- table_cloath (bool)
+- vase (bool)
+- wireless_mic (bool)
+- Add_chair (bool)
+- Add_mic (bool)
+- Other (Text)
+
+- photography (bool)
+- video_recording (bool)
+
+- cafe  (bool)
+- own_arange (bool)
