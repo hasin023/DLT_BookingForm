@@ -1,3 +1,45 @@
+<?php
+    $msg = "null";
+
+    $succ = "null";
+    
+    if(isset($_GET['status'])){
+        if($_GET['status'] == 'wrongdate'){
+            $msg = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Selected Date is earlier than today</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+        }
+        else if($_GET['status'] == 'wrongtime'){
+            $msg = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Meeting end time is before than start time</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+        }
+        if($_GET['status'] == 'success'){
+            $msg = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Your Meeting Request is Submitted</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+        }
+        else if($_GET['status'] == 'failed'){
+            $msg = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Something Went Wrong</strong> Try again after some time.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+        }
+    }
+
+    if(isset($_GET['status'])){
+        
+    }
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +61,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar Start -->
-        <!-- php -->
-    <!-- Navbar end -->
 
     <!-- Main Start -->
     <div class="container-fluid">
@@ -35,25 +74,8 @@
     </div>
 
     <div class="container sh-form-container">
-        <!-- <div class="row">
-            <div class="col-3">
-                <div class="tr-formheader">
-                    <div class="tr-formimg">
-                        <img src="../iutlogo/IUTLogo.png" class="logo">
-                    </div>
-                    <div class="col-6">
-                        Islamic University of Technology
-                    </div>
-                    <div class="col-3">
-                        <div class="tr-formimg">
-                            <img src="../iutlogo/OICLogo.png" class="logo">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="row">
-            <div class="col-md-3 col-6 d-flex justify-content-center align-items-center mt-5">
+            <div class="col-md-3 col-6 d-none d-md-flex justify-content-center align-items-center mt-5">
                 <img src="../iutlogo/IUTLogo.png" style="width: 70px;" class="logo">
             </div>
             <div class="col-12 col-md-6 tr-frhd mt-5">
@@ -63,13 +85,22 @@
                 <h6><span class="text-danger">*</span> Fields Are Required</h6>
                 <hr>
             </div>
-            <div class="col-md-3 col-6 d-flex justify-content-center align-items-center mt-5">
+            <div class="col-md-3 col-6 d-none d-md-flex justify-content-center align-items-center mt-5">
                 <img src="../iutlogo/OICLogo.png" style="width: 90px;" class="logo">
             </div>
         </div>
         <div class="row">
+            <div class="col-md-6 col-12 offset-md-3">
+                <?php 
+                    if($msg != "null"){
+                        echo $msg;
+                    }
+                ?>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-8 col-12 offset-lg-2">
-                <form class="requires-validation" action="../cr/" method="post"></form>
+                <form class="requires-validation" action="action.php" method="post">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 mt-5 mb-2">
@@ -77,8 +108,8 @@
                             </div>
                             <div class="col-md-8 mt-1">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name" name="fullname" required>
-                                    <label for="floatingInput">Applicant Name <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="floatingInput" placeholder="name" name="email" required>
+                                    <label for="floatingInput">Applicant<span class="text-danger">*</span></label>
                                 </div>
                             </div>
                             <div class="col-md-4 mt-1">
@@ -88,12 +119,13 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-1 mb-3">
-                                <select class="form-select mt-3" style="height: 60px;" required>
+                                <select class="form-select mt-3" style="height: 60px;" name="Designation" required>
                                     <option selected disabled value="">Designation</option>
                                     <option value="prof">Professor</option>
                                     <option value="assoprof">Associate Professor</option>
                                     <option value="assiprof">Assistant Professor</option>
                                     <option value="lect">Lecturer</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
                             
@@ -130,57 +162,57 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 mt-5 mb-2">
-                                <h4>Technical Support (From ICT Center)<span class="text-danger">*</span></h4>
+                                <h4>Technical Support (From ICT Center)</h4>
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="desktop_pc" id="invalidCheck">
                                     <label class="form-check-label">Desktop PC</label>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="big_displays" id="invalidCheck">
                                     <label class="form-check-label">Big Displays</label>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="add_projector" id="invalidCheck">
                                     <label class="form-check-label">Additional Projector</label>
                                 </div>
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="writing_glass_board" id="invalidCheck">
                                     <label class="form-check-label">Writing Glass Board with Pen</label>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="wifi" id="invalidCheck">
                                     <label class="form-check-label">Wi-Fi for Participants</label>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="bdren_zoom" id="invalidCheck">
                                     <label class="form-check-label">BdREN Zoom Meeting Support</label>
                                 </div>
                             </div>
                             
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="microphone_wireless" id="invalidCheck">
                                     <label class="form-check-label">Microphone (Wireless)</label>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="microphone_handhold" id="invalidCheck">
                                     <label class="form-check-label">Microphone (Handhold)</label>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-1">
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" id="floatingTextarea" placeholder="technicalperson" name="technicalperson" required></textarea>
-                                    <label for="floatingTextarea">ICT Centre Technical Person Support for <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="floatingTextarea" placeholder="technicalperson" name="technicalperson"></textarea>
+                                    <label for="floatingTextarea">ICT Centre Technical Person Support for</label>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-1">
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" id="floatingTextarea" placeholder="othersupport" name="othersupport" required></textarea>
-                                    <label for="floatingTextarea">Other Support <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="floatingTextarea" placeholder="othersupport" name="othersupport"></textarea>
+                                    <label for="floatingTextarea">Other Support</label>
                                 </div>
                             </div>
                             
@@ -188,25 +220,25 @@
 
                         <div class="row">
                             <div class="col-md-12 mt-5 mb-2">
-                                <h4> Logistics Support (From Engineering Office)<span class="text-danger">*</span></h4>
+                                <h4> Logistics Support (From Engineering Office)</h4>
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="table_cloth" id="invalidCheck">
                                     <label class="form-check-label">Font Desk with Table Cloth</label>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="add_chair" id="invalidCheck">
                                     <label class="form-check-label">Additional Chairs at front</label>
                                 </div>
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="vase" id="invalidCheck">
                                     <label class="form-check-label">Flowers with vase</label>
                                 </div>
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="add_mic" id="invalidCheck">
                                     <label class="form-check-label">Additional Microphone</label>
                                 </div>
                                 
@@ -214,14 +246,14 @@
                             
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="wireless_mic_bat" id="invalidCheck">
                                     <label class="form-check-label">Wireless Microphone Battery</label>
                                 </div>
                             </div>
                             <div class="col-md-12 mt-1">
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" id="floatingTextarea" placeholder="otherlogi" name="otherlogi" required></textarea>
-                                    <label for="floatingTextarea">Other<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="floatingTextarea" placeholder="otherlogi" name="otherlogi"></textarea>
+                                    <label for="floatingTextarea">Other</label>
                                 </div>
                             </div>
                             
@@ -233,13 +265,13 @@
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="photography" id="invalidCheck">
                                     <label class="form-check-label">Photography</label>
                                 </div>
                             </div>
                             <div class="col-md-4 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="video_recording" id="invalidCheck">
                                     <label class="form-check-label">Video Recording</label>
                                 </div>
                             </div>
@@ -251,13 +283,13 @@
                             </div>
                             <div class="col-md-6 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="cafe_cafeteria" id="invalidCheck">
                                     <label class="form-check-label">Arranged by Cafeteria <br>(The particular Department arranges food and Services supported by Cafeteria).</label>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-2">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <input class="form-check-input" type="checkbox" value="1" name="own_arrange" id="invalidCheck">
                                     <label class="form-check-label">Arranged by Particular Department <br>(The particular Department arranges food and Services)</label>
                                 </div>
                             </div>
