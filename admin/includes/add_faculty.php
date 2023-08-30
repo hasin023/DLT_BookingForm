@@ -36,7 +36,7 @@
     </div>
 
 </form> -->
-<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-lg-8 col-12 offset-lg-2">
                 <div class="card">
@@ -90,7 +90,7 @@
                         <div class="row">
                             
                             <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary sh-search" style="width: 100%;">Add Faculty</button>
+                                <input id="submit" type="submit" value="Add Faculty" class="btn btn-success sh-search" style="width: 100%;"></input>
                             </div> 
                         </div>
                     </div>
@@ -99,7 +99,6 @@
             </div>
         </div>
     </div>
-
 
 <style>
     .card{
