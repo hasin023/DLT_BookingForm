@@ -1,3 +1,16 @@
+<?php
+
+
+
+
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,48 +25,30 @@
     <!-- Style -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../style.css">
-    <script defer src="script.js"></script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
-<body onload="start()">
+<body>
     <div class="sh-login-sec">
         <div class="container">
             <div class="row">
                 <div class="col-10 col-lg-4 offset-lg-4 offset-1">
                     <h1 class="text-center mb-3">login</h1>
                     <hr>
-                    <form action="../login/" method="post">
-                        <!-- <div class="card-2 mt-5" id="mail_card">
+                    <form action="../otp/" method="post">
+                        <div class="card-2 mt-5" id="mail_card">
                             <div class="form-floating mb-3 mt-3">
-                                <input type="email" class="form-control" id="floatingInput" name = "username" placeholder="name@example.com" required>
+                                <input type="email" class="form-control" id="floatingInput" name = "email" placeholder="name@example.com" required>
                                 <label for="floatingInput">Email Address</label>
                             </div>
                             <button type="submit" class="btn btn-warning" id="next_card" style="width: 100%;">Send OTP</button>
-                        </div> -->
-                        <div class="card-2 mt-5" id="otp_card">
-                            <div class="form-floating mt-3 mb-3">
-                                <input type="number" class="form-control" id="floatingPassword" name = "otp" placeholder="otp" required>
-                                <label for="floatingPassword">OTP</label>
-                            </div>
-                            <button type="submit" class="btn btn-success mb-4" style="width: 100%;">login</button>
-                            <p class="text-secondary mb-2" id="counting">Resend email in <span id="timeface"></span></p>
-                            <p class="text-secondary mb-2" style="display: none;" id="done_counting">If OTP is not sent to you, click on resend</p>
-                            <div class="btn-group" style="width: 100%;">
-                                <a href="../login/" class="btn btn-outline-secondary" style="display: none;" id="cresend">Resend Email</a>
-                            </div>
                         </div>
-                        
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        
-    </script>
 
 
 </body>
