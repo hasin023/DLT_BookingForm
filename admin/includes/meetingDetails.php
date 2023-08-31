@@ -10,7 +10,6 @@
                         <th class="text-center">Meeting ID</th>
                         <th class="text-center">Applicant Name</th>
                         <th class="text-center">Applicant Designation</th>
-                        <th class="text-center">Participants</th>
                         <th class="text-center">Meeting Date</th>
                         <th class="text-center">Start Time</th>
                         <th class="text-center">Status</th>

@@ -17,13 +17,12 @@ function confirmQuery($result)
     }
 }
 
-function generateMeetingId($date, $time, $participants)
+function generateMeetingId($date, $time)
 {
     $date = str_replace("-", "", $date);
     $time = str_replace(":", "", $time);
-    $participants = str_replace(" ", "", $participants);
 
-    $meeting_id = $date . $time . $participants;
+    $meeting_id = $date . $time;
 
     return $meeting_id;
 }
@@ -57,39 +56,22 @@ function getAllMeetings()
         $id = escape($row['id']);
         $applicant_name = escape($row['applicant_name']);
         $applicant_designation = escape($row['designation']);
-        $participants = escape($row['participants']);
         $meeting_date = escape($row['meeting_date']);
         $start_time = escape($row['start_time']);
         $meeting_status = escape($row['meeting_status']);
-        $meeting_id = generateMeetingId($meeting_date, $start_time, $participants);
+        $meeting_id = generateMeetingId($meeting_date, $start_time);
 
-        $isPreviousMeeting = isPreviousMeeting($meeting_date);
 
-        if ($isPreviousMeeting) {
-            $meeting_status = "completed";
-
-            echo "<tr>
+        echo "<tr>
             <td class='text-dark text-center'>$meeting_id</td>
             <td class='text-dark text-center'>$applicant_name</td>
             <td class='text-dark text-center'>$applicant_designation</td>
-            <td class='text-dark text-center'>$participants</td>
             <td class='text-dark text-center'>$meeting_date</td>
             <td class='text-dark text-center'>$start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
             <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
           </tr>";
-        } else {
-            echo "<tr>
-            <td class='text-dark text-center'>$meeting_id</td>
-            <td class='text-dark text-center'>$applicant_name</td>
-            <td class='text-dark text-center'>$applicant_designation</td>
-            <td class='text-dark text-center'>$participants</td>
-            <td class='text-dark text-center'>$meeting_date</td>
-            <td class='text-dark text-center'>$start_time</td>
-            <td class='text-dark text-center'>$meeting_status</td>
-            <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
-          </tr>";
-        }
+
 
     }
 
@@ -107,17 +89,15 @@ function getPendingMeetings()
         $id = escape($row['id']);
         $applicant_name = escape($row['applicant_name']);
         $applicant_designation = escape($row['designation']);
-        $participants = escape($row['participants']);
         $meeting_date = escape($row['meeting_date']);
         $start_time = escape($row['start_time']);
         $meeting_status = escape($row['meeting_status']);
-        $meeting_id = generateMeetingId($meeting_date, $start_time, $participants);
+        $meeting_id = generateMeetingId($meeting_date, $start_time);
 
         echo "<tr>
             <td class='text-dark text-center'>$meeting_id</td>
             <td class='text-dark text-center'>$applicant_name</td>
             <td class='text-dark text-center'>$applicant_designation</td>
-            <td class='text-dark text-center'>$participants</td>
             <td class='text-dark text-center'>$meeting_date</td>
             <td class='text-dark text-center'>$start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
@@ -133,36 +113,28 @@ function getPreviousMeetings()
 {
     global $connection;
 
-    $query = "SELECT * FROM meetings WHERE meeting_status = 'approved'";
+    $query = "SELECT * FROM meetings WHERE meeting_status = 'completed'";
     $select_meetings = mysqli_query($connection, $query);
 
     while ($row = mysqli_fetch_assoc($select_meetings)) {
         $id = escape($row['id']);
         $applicant_name = escape($row['applicant_name']);
         $applicant_designation = escape($row['designation']);
-        $participants = escape($row['participants']);
         $meeting_date = escape($row['meeting_date']);
         $start_time = escape($row['start_time']);
         $meeting_status = escape($row['meeting_status']);
-        $meeting_id = generateMeetingId($meeting_date, $start_time, $participants);
+        $meeting_id = generateMeetingId($meeting_date, $start_time);
 
-        $isPreviousMeeting = isPreviousMeeting($meeting_date);
 
-        if ($isPreviousMeeting) {
-            $meeting_status = "completed";
-
-            echo "<tr>
+        echo "<tr>
             <td class='text-dark text-center'>$meeting_id</td>
             <td class='text-dark text-center'>$applicant_name</td>
             <td class='text-dark text-center'>$applicant_designation</td>
-            <td class='text-dark text-center'>$participants</td>
             <td class='text-dark text-center'>$meeting_date</td>
             <td class='text-dark text-center'>$start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
             <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
-          </tr>";
-        }
-
+        </tr>";
     }
 
 }

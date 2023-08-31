@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $technicalperson = $_POST['technicalperson'];
     $othersupport = $_POST['othersupport'];
     $otherlogi = $_POST['otherlogi'];
+    $meeting_status = "pending";
 
     // Checkboxes
     $desktop_pc = isset($_POST['desktop_pc']) ? 1 : 0;
@@ -53,17 +54,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare and execute SQL query
     $sql = "INSERT INTO meetings 
-    (Applicant, Application_date, Designation, Details, Booking_date, 
-    Time_from, Time_to, ict_help_reason, other_support, Pc, glass_board,
+    (applicant_name, application_date, designation, details, meeting_date, 
+    start_time, end_time, ict_help_reason, other_support, pc, glass_board,
     mic_wireless, mic_wire, big_displays, wifi, add_projector, bdren, 
-    table_cloth, vase, wireless_mic_bat, add_chair, add_mic, Other, 
-    photography, video_recording, cafe, own_arrange) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    table_cloth, vase, wireless_mic_bat, add_chair, add_mic, other, 
+    photography, video_recording, cafe, own_arrange, meeting_status) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssssiiiiiiiiiiiiisiiii", $applicant, $today, $designation, $purpose, $bookingday, $timefrom, $timeto, $technicalperson, $othersupport, $desktop_pc, $writing_glass_board, $microphone_wireless, $microphone_handhold, $big_displays, $wifi, $add_projector, $bdren_zoom, $table_cloth, $vase, $wireless_mic_bat, $add_chair, $add_mic, $otherlogi, $photography, $video_recording, $cafe_cafeteria, $own_arrange );
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("sssssssssiiiiiiiiiiiiisiiiis", $applicant, $today, $designation, $purpose, $bookingday, $timefrom, $timeto, $technicalperson, $othersupport, $desktop_pc, $writing_glass_board, $microphone_wireless, $microphone_handhold, $big_displays, $wifi, $add_projector, $bdren_zoom, $table_cloth, $vase, $wireless_mic_bat, $add_chair, $add_mic, $otherlogi, $photography, $video_recording, $cafe_cafeteria, $own_arrange, $meeting_status);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
@@ -74,6 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Close statement and connection
     $stmt->close();
-    $conn->close();
+    $connection->close();
 }
 ?>
