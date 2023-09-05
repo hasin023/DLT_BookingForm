@@ -1,66 +1,42 @@
 <?php
-    $msg = "null";
+$msg = "null";
 
-    $succ = "null";
-    
-    if(isset($_GET['status'])){
-        if($_GET['status'] == 'wrongdate'){
-            $msg = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+$succ = "null";
+
+if (isset($_GET['status'])) {
+    if ($_GET['status'] == 'wrongdate') {
+        $msg = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Selected Date is earlier than today</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>';
-        }
-        else if($_GET['status'] == 'wrongtime'){
-            $msg = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    } else if ($_GET['status'] == 'wrongtime') {
+        $msg = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Meeting end time is before than start time</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>';
-        }
-        if($_GET['status'] == 'success'){
-            $msg = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    }
+    if ($_GET['status'] == 'success') {
+        $msg = '<div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Your Meeting Request is Submitted</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>';
-        }
-        else if($_GET['status'] == 'failed'){
-            $msg = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    } else if ($_GET['status'] == 'failed') {
+        $msg = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Something Went Wrong</strong> Try again after some time.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>';
-        }
     }
+}
 
-    if(isset($_GET['status'])){
-        
-    }
+if (isset($_GET['status'])) {
+
+}
 
 
 ?>
 
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Design</title>
-
-    <!-- Site Icon -->
-    <link rel="icon" type="image/x-icon" href="../../rsx/logo.ico"> <!-- Link to the Path of icon -->
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- Unicons -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-
-    <!-- Style and Scripts -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<?php include("includes/form_header.php"); ?>
 
     <!-- Main Start -->
     <div class="container-fluid">
@@ -91,10 +67,10 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-12 offset-md-3">
-                <?php 
-                    if($msg != "null"){
-                        echo $msg;
-                    }
+                <?php
+                if ($msg != "null") {
+                    echo $msg;
+                }
                 ?>
             </div>
         </div>
@@ -310,48 +286,6 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-4.5.2/dist/js/bootstrap.min.js"></script> -->
-    <script>
-        $(document).ready(function() {
-            $('.tt, .tf').on('change', function() {
-                var tfVal = $('.tf').val();
-                var ttVal = $('.tt').val();
+    <!-- Main End -->
 
-                if (tfVal && ttVal) {
-                    var tf = new Date('2000-01-01 ' + tfVal);
-                    var tt = new Date('2000-01-01 ' + ttVal);
-
-                    if (tt < tf) {
-                        $('.td').val('Selection is invalid');
-                    } else {
-                        var diffInMillis = tt - tf;
-                        var hours = Math.floor(diffInMillis / 3600000);
-                        var minutes = Math.floor((diffInMillis % 3600000) / 60000);
-
-                        $('.td').val(hours + ' hours ' + minutes + ' minutes');
-                    }
-                } else {
-                    $('.td').val('');
-                }
-            });
-        });
-    </script>
-
-    <script>
-        // Get the input element by its ID
-        // Get the input element with the "today" class
-        var inputElement = document.querySelector(".today");
-
-        // Get the current date in YYYY-MM-DD format
-        var currentDate = new Date().toISOString().slice(0, 10);
-
-        // Set the value of the input element to the current date
-        inputElement.value = currentDate;
-
-        // Make the input element read-only
-        inputElement.setAttribute("readonly", "readonly");
-    </script>
-
-</body>
-</html>
+<?php include("includes/form_footer.php"); ?>
