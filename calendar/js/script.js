@@ -41,40 +41,21 @@ $(function () {
                 }
             },
             eventDidMount: function (info) {
-                // Do Something after events mounted
+                var id = info.event.id;
+                if (!!scheds[id]) {
+                    info.el.style.backgroundColor = scheds[id].color;
+                }
             },
             editable: true
         });
 
     calendar.render();
 
-    // Form reset listener
     $('#schedule-form').on('reset', function () {
         $(this).find('input:hidden').val('');
         $(this).find('input:visible').first().focus();
     });
 
-    // Edit Button
-    $('#edit').click(function () {
-        var id = $(this).attr('data-id');
-
-        if (!!scheds[id]) {
-            var form = $('#schedule-form');
-
-            console.log(String(scheds[id].start_datetime), String(scheds[id].start_datetime).replace(" ", "\\t"));
-            form.find('[name="id"]').val(id);
-            form.find('[name="title"]').val(scheds[id].title);
-            form.find('[name="description"]').val(scheds[id].description);
-            form.find('[name="start_datetime"]').val(String(scheds[id].start_datetime).replace(" ", "T"));
-            form.find('[name="end_datetime"]').val(String(scheds[id].end_datetime).replace(" ", "T"));
-            $('#event-details-modal').modal('hide');
-            form.find('[name="title"]').focus();
-        } else {
-            alert("Event is undefined");
-        }
-    });
-
-    // Delete Button / Deleting an Event
     $('#delete').click(function () {
         var id = $(this).attr('data-id');
 
