@@ -2,14 +2,14 @@
 
 
 <?php
-require_once('db-connect.php');
+require_once('connection.php');
 
-$schedules = $connection->query("SELECT * FROM `meetings`");
+$schedules = $connection->query("SELECT * FROM `schedules`");
 $sched_res = [];
 
 foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {
-    $row['application_date'] = date("F d, Y h:i A", strtotime($row['application_date']));
-    $row['meeting_date'] = date("F d, Y h:i A", strtotime($row['meeting_date']));
+    $row['sdate'] = date("F d, Y h:i A", strtotime($row['start_datetime']));
+    $row['edate'] = date("F d, Y h:i A", strtotime($row['end_datetime']));
     $sched_res[$row['id']] = $row;
 }
 
@@ -28,44 +28,8 @@ if (isset($connection))
 </nav>
 <div class="container py-5" id="page-container">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div id="calendar"></div>
-        </div>
-        <div class="col-md-3">
-            <div class="cardt rounded-0 shadow">
-                <div class="card-header bg-gradient bg-primary text-light">
-                    <h5 class="card-title">Schedule Form</h5>
-                </div>
-                <div class="card-body">
-                    <div class="container-fluid">
-                        <form action="save_schedule.php" method="post" id="schedule-form">
-                            <input type="hidden" name="id" value="">
-                            <div class="form-group mb-2">
-                                <label for="title" class="control-label">Title</label>
-                                <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
-                            </div>
-                            <div class="form-group mb-2">
-                                <label for="description" class="control-label">Description</label>
-                                <textarea rows="3" class="form-control form-control-sm rounded-0" name="description" id="description" required></textarea>
-                            </div>
-                            <div class="form-group mb-2">
-                                <label for="start_datetime" class="control-label">Start</label>
-                                <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
-                            </div>
-                            <div class="form-group mb-2">
-                                <label for="end_datetime" class="control-label">End</label>
-                                <input type="datetime-local" class="form-control form-control-sm rounded-0" name="end_datetime" id="end_datetime" required>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="text-center">
-                        <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i class="fa fa-save"></i> Save</button>
-                        <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -93,7 +57,6 @@ if (isset($connection))
             </div>
             <div class="modal-footer rounded-0">
                 <div class="text-end">
-                    <button type="button" class="btn btn-primary btn-sm rounded-0" id="edit" data-id="">Edit</button>
                     <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Delete</button>
                     <button type="button" class="btn btn-secondary btn-sm rounded-0" data-bs-dismiss="modal">Close</button>
                 </div>

@@ -1,5 +1,5 @@
 <?php
-require_once('db-connect.php');
+require_once('connection.php');
 
 if (!isset($_GET['id'])) {
     echo "<script> alert('Undefined Schedule ID.'); location.replace('./') </script>";
@@ -7,7 +7,7 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
-$delete = $connection->query("DELETE FROM `schedule_list` where id = '{$_GET['id']}'");
+$delete = $connection->query("DELETE FROM `schedules` where id = '{$_GET['id']}'");
 
 if ($delete) {
     echo "<script> alert('Event has deleted successfully.'); location.replace('./') </script>";
