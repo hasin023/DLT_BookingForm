@@ -1,4 +1,28 @@
 <?php
+    include_once('../connection.php');
+    $received_email = mysqli_real_escape_string($connection, $_POST["email"]);
+
+    $sql = "SELECT * FROM `faculty` WHERE email = '$received_email'";
+    $result = mysqli_query($connection, $sql);
+
+    if ($result) {
+        // Check if any rows were returned
+        if (mysqli_num_rows($result) > 0) {
+            //handle login
+        } else {
+            header("Location: ../login/?error=eml");
+            exit();
+        }
+    } else {
+        echo "Database error: " . mysqli_error($connection);
+    }
+
+    mysqli_close($connection);
+?>
+
+
+
+<?php
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
@@ -11,7 +35,7 @@
         $otp = rand(100000, 999999);
         session_start();
         $_SESSION["otp"] = $otp;
-        $_SESSION["email"] = $_POST["email"];
+        $_SESSION["email"] = $received_email;
 
         $mail = new PHPMailer(true);
         $mail->isSMTP();
