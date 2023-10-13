@@ -25,7 +25,7 @@ html body{
     padding: 1rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     margin-bottom: 1rem;
-    min-height: 52vh;
+    min-height: 20vh;
 }
 .card-2{
     background: #fff;
@@ -40,6 +40,8 @@ html body{
 .card-2 p{
     margin: 0;
 }
+
+
 
 
 

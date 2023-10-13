@@ -1,6 +1,7 @@
 <?php
 // Include the database connection
 include '../connection.php';
+$applicant = "";
 
 // Ensure this PHP file is accessed only through POST method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -67,14 +68,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssssssssiiiiiiiiiiiiisiiiis", $applicant, $today, $designation, $purpose, $bookingday, $timefrom, $timeto, $technicalperson, $othersupport, $desktop_pc, $writing_glass_board, $microphone_wireless, $microphone_handhold, $big_displays, $wifi, $add_projector, $bdren_zoom, $table_cloth, $vase, $wireless_mic_bat, $add_chair, $add_mic, $otherlogi, $photography, $video_recording, $cafe_cafeteria, $own_arrange, $meeting_status);
     $stmt->execute();
 
+    
+
+    // Close statement and connection
+
+}
+?>
+
+
+<?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require '../phpmailer/src/Exception.php';
+    require '../phpmailer/src/PHPMailer.php';
+    require '../phpmailer/src/SMTP.php';
+    function send_mail($to){
+
+        $mymail = '<h1>A new meeting request has been made</h1>
+                    <hr>
+                    <p>Meeting Date : '. $_POST['bookingday'] .' </p>';
+        $mymail .= '<p>Meeting Time : '. $_POST['timefrom'] .' - '. $_POST['timeto'] .' </p>';
+        $mymail .= '<p>Meeting Purpose : '. $_POST['purpose'] .' </p>';
+        $mymail .= '<p>Meeting Applicant : '. $_POST['email'] .' </p>';
+        $mymail .= '<p>Meeting Applicant Designation : '. $_POST['Designation'] .' </p>';
+        $mymail .= '<hr>';
+        $mymail .= '<h3 style = "color: red;">Please check your dashboard for details.</h3>';
+
+
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'sakhawatadib@gmail.com'; // Gmail address which you want to use as SMTP server
+        $mail->Password = 'vxwbuoirvzrhdzek'; // Gmail application Password
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+        $mail->setFrom('sakhawatadib@gmail.com'); // Gmail address which you used as SMTP server
+        
+        $mail->addAddress($to);
+        $mail->isHTML(true);
+        $mail->Subject = 'DLT : A new meeting request has been made';
+        $mail->Body = $mymail;
+        $mail->send();
+    }
+    
+    // select the email of admin from faculty table
+    $sql = "SELECT email FROM faculty WHERE role = 'admin'";
+    $result = $connection->query($sql);
+    while($row = $result->fetch_assoc()){
+        $admin_email = $row['email'];
+        send_mail($admin_email);
+    }
+
     if ($stmt->affected_rows > 0) {
         header("Location: ../form?status=success");
     } else {
         header("Location: ../form?status=failed");
     }
 
-    // Close statement and connection
+
     $stmt->close();
     $connection->close();
-}
 ?>

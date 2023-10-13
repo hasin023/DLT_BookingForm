@@ -37,6 +37,13 @@
         $_SESSION["otp"] = $otp;
         $_SESSION["email"] = $received_email;
 
+        $mymail = '<h1>Your OTP is <b>'. $otp .'</b></h1>
+                    <hr>
+                    <p>Use this OTP to login to your account.</p>
+                    <hr>
+                    <p>If you did not request this OTP, please ignore this email.</p>';
+
+
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
@@ -50,7 +57,7 @@
         $mail->addAddress($_POST["email"]);
         $mail->isHTML(true);
         $mail->Subject = 'Your DLT Login OTP';
-        $mail->Body = 'Your OTP is <b>'.$otp.'</b>';
+        $mail->Body = $mymail;
 
         if($mail->send()){
             echo '<script>alert("OTP sent to your email")</script>';
