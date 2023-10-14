@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2023 at 05:06 PM
+-- Generation Time: Oct 14, 2023 at 03:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -56,9 +56,7 @@ CREATE TABLE `meetings` (
   `id` int(11) NOT NULL,
   `applicant_name` varchar(255) NOT NULL,
   `application_date` date NOT NULL DEFAULT current_timestamp(),
-  `participants` int(11) NOT NULL,
   `designation` varchar(50) NOT NULL,
-  `role` varchar(50) NOT NULL,
   `details` text NOT NULL,
   `meeting_date` date NOT NULL,
   `start_time` time NOT NULL,
@@ -90,10 +88,35 @@ CREATE TABLE `meetings` (
 -- Dumping data for table `meetings`
 --
 
-INSERT INTO `meetings` (`id`, `applicant_name`, `application_date`, `participants`, `designation`, `role`, `details`, `meeting_date`, `start_time`, `end_time`, `ict_help_reason`, `other_support`, `pc`, `glass_board`, `mic_wireless`, `mic_wire`, `big_displays`, `wifi`, `add_projector`, `bdren`, `table_cloth`, `vase`, `wireless_mic_bat`, `add_chair`, `add_mic`, `other`, `photography`, `video_recording`, `cafe`, `own_arrange`, `meeting_status`) VALUES
-(1, 'sakhawatadib@gmail.com', '2023-08-30', 25, 'Student', 'other', 'abcdef', '2023-08-31', '17:43:00', '19:41:00', 'None', 'None', 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 'None', 0, 1, 1, 0, 'pending'),
-(4, 'test@gmail.com', '2023-08-30', 12, 'Lecturer', 'faculty', 'New Test', '2023-09-06', '07:30:00', '11:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'approved'),
-(5, 'previoustest@gmail.com', '2023-08-25', 32, 'Professor', 'head', 'Previous Test', '2023-08-28', '04:30:00', '08:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'approved');
+INSERT INTO `meetings` (`id`, `applicant_name`, `application_date`, `designation`, `details`, `meeting_date`, `start_time`, `end_time`, `ict_help_reason`, `other_support`, `pc`, `glass_board`, `mic_wireless`, `mic_wire`, `big_displays`, `wifi`, `add_projector`, `bdren`, `table_cloth`, `vase`, `wireless_mic_bat`, `add_chair`, `add_mic`, `other`, `photography`, `video_recording`, `cafe`, `own_arrange`, `meeting_status`) VALUES
+(1, 'sakhawatadib@gmail.com', '2023-08-30', 'Student', 'abcdef', '2023-08-31', '17:43:00', '19:41:00', 'None', 'None', 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 'None', 0, 1, 1, 0, 'completed'),
+(4, 'test@gmail.com', '2023-08-30', 'Lecturer', 'New Test', '2023-09-06', '07:30:00', '11:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'approved'),
+(5, 'previoustest@gmail.com', '2023-08-25', 'Professor', 'Previous Test', '2023-08-28', '04:30:00', '08:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'completed'),
+(6, 'pendingtest@gmail.com', '2023-08-31', 'Professor', 'Pending Test', '2023-09-02', '04:30:00', '08:00:00', 'None', 'None', 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 'None', 0, 0, 1, 0, 'pending'),
+(7, 'saasassa@dads.com', '2023-08-31', 'prof', 'Testing for Drums', '2023-09-06', '15:02:00', '16:58:00', 'NONE', 'NONE', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'NONE', 1, 1, 1, 1, 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedules`
+--
+
+CREATE TABLE `schedules` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `start_datetime` datetime NOT NULL,
+  `end_datetime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `schedules`
+--
+
+INSERT INTO `schedules` (`id`, `title`, `description`, `start_datetime`, `end_datetime`) VALUES
+(2, 'Meeting 2', 'Test description Meeting2', '2023-09-16 14:00:00', '2023-09-16 16:00:00'),
+(3, 'Appointment', 'Test description Meeting Appointment', '2023-09-17 09:30:00', '2023-09-17 10:30:00'),
+(5, 'Appointment Now', 'Meeting Appointment 3', '2023-10-15 08:30:00', '2023-10-15 10:30:00');
 
 --
 -- Indexes for dumped tables
@@ -112,6 +135,12 @@ ALTER TABLE `meetings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `schedules`
+--
+ALTER TABLE `schedules`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -125,6 +154,12 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `meetings`
 --
 ALTER TABLE `meetings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `schedules`
+--
+ALTER TABLE `schedules`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
