@@ -273,10 +273,56 @@
               </div>
             </div>
           </div>
-          <a class="btn btn-danger" href="meetings.php?delete=#">Delete</a>
-          <a class="btn btn-success" href="meetings.php?approve=#">Approve</a>
+
+          <?php
+
+          echo "<a class='btn btn-danger' href='meetings.php?delete={$id}'>Delete</a>";
+          echo " ";
+          echo "<a class='btn btn-success' href='meetings.php?approve={$id}'>Approve</a>";
+
+          ?>
         </div>
     </div>
+
+    <?php
+
+    if (isset($_GET['approve'])) {
+
+      $r_id = mysqli_real_escape_string($connection, $_GET['approve']);
+
+      $start_dateTime = $meeting_date . " " . $start_time;
+      $end_dateTime = $meeting_date . " " . $end_tmie;
+
+      $schedule_query = "INSERT INTO schedules(title, description, start_dateTime, end_dateTime) VALUES ('{$meeting_id}', '{$meeting_purpose}', '{$start_dateTime}', '{$end_dateTime}') ";
+
+      $insert_schedule = mysqli_query($connection, $schedule_query);
+
+      confirmQuery($insert_schedule);
+
+      $meeting_query = "UPDATE meetings SET meeting_status = 'approved' WHERE comment_id = {$id} ";
+      $approve_query = mysqli_query($connection, $meeting_query);
+
+      confirmQuery($approve_query);
+
+
+      header("Location: comments.php");
+
+    }
+
+
+    // if (isset($_GET['delete'])) {
+    
+    //   $comment_id = mysqli_real_escape_string($connection, $_GET['delete']);
+    
+    //   $query = "DELETE FROM comments WHERE comment_id = {$comment_id} ";
+    //   $delete_query = mysqli_query($connection, $query);
+    
+    //   confirmQuery($delete_query);
+    
+    //   header("Location: comments.php");
+    // }
+    
+    ?>
 
 
 </div>

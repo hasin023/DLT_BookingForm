@@ -71,7 +71,7 @@ function getAllMeetings()
             <td class='text-dark text-center'>$formatted_meeting_date</td>
             <td class='text-dark text-center'>$formatted_start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
-            <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
+            <td width='5%'><a href='request_details.php?r_id={$id}' class='btn btn-info'>VIEW</a></td>
           </tr>";
 
 
