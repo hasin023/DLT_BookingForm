@@ -327,6 +327,27 @@
     }
 
 
+    if (isset($_POST['unapprove_request'])) {
+
+      $id = $_GET['r_id'];
+
+      $schedule_query = "DELETE FROM schedules WHERE title = '{$meeting_id}' ";
+
+      $delete_schedule = mysqli_query($connection, $schedule_query);
+
+      confirmQuery($delete_schedule);
+
+      $meeting_query = "UPDATE meetings SET meeting_status = 'pending' WHERE id = {$id} ";
+      $approve_query = mysqli_query($connection, $meeting_query);
+
+      confirmQuery($approve_query);
+
+
+      header("Location: meetings.php?source=pending_requests");
+
+    }
+
+
     if (isset($_POST['delete_request'])) {
 
       $id = $_GET['r_id'];
