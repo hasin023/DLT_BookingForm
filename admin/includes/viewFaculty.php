@@ -13,44 +13,14 @@
                         <th class="text-center">Email</th>
                         <th class="text-center">Role</th>
                         <th class="text-center">Edit</th>
-                        <th class="text-center">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php getAllFaculty(); ?>
-                    <!-- <tr>
-                        <td class="text-center">John Doe</td>
-                        <td class="text-center">Computer Science</td>
-                        <td class="text-center">Professor</td>
-                        <td class="text-center">john.doe@example.com</td>
-                        <td class="text-center">123 Main St, Room 101</td>
-                    </tr>
-                    -->
+
                 </tbody>
             </table>
-
-            <?php
-
-
-            if (isset($_GET['delete'])) {
-
-                if (isset($_SESSION['role'])) {
-                    if ($_SESSION['role'] == 'admin') {
-                        $id = mysqli_real_escape_string($connection, $_GET['delete']);
-
-                        $query = "DELETE FROM faculty WHERE id = {$id} ";
-                        $delete_query = mysqli_query($connection, $query);
-
-                        confirmQuery($delete_query);
-
-                        header("Location: faculty.php");
-                    }
-                }
-
-            }
-
-            ?>
 
 
         </div>

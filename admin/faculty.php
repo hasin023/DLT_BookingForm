@@ -38,6 +38,10 @@
                             include("includes/add_faculty.php");
                             break;
 
+                        case 'edit_faculty';
+                            include("includes/edit_faculty.php");
+                            break;
+
                         default:
                             include("includes/viewFaculty.php");
                             break;

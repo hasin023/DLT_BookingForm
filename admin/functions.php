@@ -71,7 +71,7 @@ function getAllMeetings()
             <td class='text-dark text-center'>$formatted_meeting_date</td>
             <td class='text-dark text-center'>$formatted_start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
-            <td width='5%'><a href='request_details.php?r_id={$id}' class='btn btn-info'>VIEW</a></td>
+            <td width='5%'><a href='request_details.php?r_id={$id}&m_status={$meeting_status}' class='btn btn-info'>VIEW</a></td>
           </tr>";
 
 
@@ -105,7 +105,7 @@ function getPendingMeetings()
             <td class='text-dark text-center'>$formatted_meeting_date</td>
             <td class='text-dark text-center'>$formatted_start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
-            <td width='5%'><a href='request_details.php?r_id={$id}' class='btn btn-info'>VIEW</a></td>
+            <td width='5%'><a href='request_details.php?r_id={$id}&m_status={$meeting_status}' class='btn btn-info'>VIEW</a></td>
           </tr>";
 
     }
@@ -139,7 +139,7 @@ function getPreviousMeetings()
             <td class='text-dark text-center'>$formatted_meeting_date</td>
             <td class='text-dark text-center'>$formatted_start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
-            <td width='5%'><a href='request_details.php?r_id={$id}' class='btn btn-info'>VIEW</a></td>
+            <td width='5%'><a href='request_details.php?r_id={$id}&m_status={$meeting_status}' class='btn btn-info'>VIEW</a></td>
         </tr>";
     }
 
@@ -170,42 +170,11 @@ function getAllFaculty()
             <td class='text-dark text-center'>$email</td>
             <td class='text-dark text-center'>$role</td>
             <td width='5%'><a href='faculty.php?source=edit_faculty&f_id={$id}' class='btn btn-warning'>EDIT</a></td>
-            <td width='5%'><a onclick=\"javascript: return confirm('Do you really want to delete the user?')\" href='faculty.php?delete={$id}' class='btn btn-danger'>DELETE</a></td>
+            
           </tr>";
 
     }
 
 }
-
-
-function updateFaculty($the_id)
-{
-    global $connection;
-
-    if (isset($_POST['update_faculty'])) {
-        $firstname = escape($_POST['firstname']);
-        $lastname = escape($_POST['lastname']);
-        $email = escape($_POST['email']);
-        $department = escape($_POST['dept']);
-        $designation = escape($_POST['designation']);
-        $role = escape($_POST['role']);
-
-        $query = "UPDATE faculty SET ";
-        $query .= "first_name = '{$firstname}', ";
-        $query .= "last_name = '{$lastname}', ";
-        $query .= "email = '{$email}', ";
-        $query .= "department = '{$department}', ";
-        $query .= "designation = '{$designation}', ";
-        $query .= "role = '{$role}' ";
-        $query .= "WHERE id = {$the_id} ";
-
-        $update_query = mysqli_query($connection, $query);
-
-        confirmQuery($update_query);
-
-        header("Location: faculty.php");
-    }
-}
-
 
 ?>

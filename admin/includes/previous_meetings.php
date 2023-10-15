@@ -18,15 +18,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <?php getPreviousMeetings(); ?>
-                    <!-- <tr>
-                        <td class="text-center">Garrett Winters</td>
-                        <td class="text-center">Accountant</td>
-                        <td class="text-center">20</td>
-                        <td class="text-center">2011/07/25</td>
-                        <td class="text-center">2:30 PM</td>
-                        <td class="text-center">Ended</td>
-                    </tr> -->
+
                 </tbody>
             </table>
         </div>

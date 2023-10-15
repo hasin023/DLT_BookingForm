@@ -19,8 +19,9 @@
 
               <?php
 
-              if (isset($_GET['r_id'])) {
+              if (isset($_GET['r_id']) && isset($_GET['m_status'])) {
                 $id = $_GET['r_id'];
+                $m_status = $_GET['m_status'];
               }
 
               $query = "SELECT * FROM meetings WHERE id = {$id}";
@@ -265,7 +266,14 @@
                       <div class="col-sm-9 text-secondary">
                       <textarea id="remarks" name="remarks" rows="4" cols="50"></textarea>
                       <br>
-                      <input class="btn btn-warning" type="submit" value="Submit">
+                      <?php
+                      if ($m_status == 'pending') {
+                        echo "<input class='btn btn-info' type='submit' value='Submit'>";
+                      } else {
+                        echo "<input class='btn btn-info' type='submit' value='Submit' disabled>";
+                      }
+
+                      ?>
                       </div>
                     </div>
                   </form>
@@ -276,9 +284,16 @@
             <form action="" method="post" enctype="multipart/form-data">
               <?php
 
-              echo "<input class='btn btn-danger' type='submit' name='delete_request' value='Delete'></input>";
-              echo " ";
-              echo "<input class='btn btn-success' type='submit' name='approve_request' value='Approve'></input>";
+              if ($m_status == 'pending') {
+
+                echo "<input class='btn btn-danger' type='submit' name='delete_request' value='Delete'></input>";
+                echo " ";
+                echo "<input class='btn btn-success' type='submit' name='approve_request' value='Approve'></input>";
+              } else if ($m_status == 'approved') {
+                echo "<input class='btn btn-warning' type='submit' name='unapprove_request' value='Unapprove'></input>";
+              } else {
+
+              }
 
               ?>
           </form>
