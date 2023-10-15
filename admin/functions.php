@@ -92,7 +92,9 @@ function getPendingMeetings()
         $applicant_name = escape($row['applicant_name']);
         $applicant_designation = escape($row['designation']);
         $meeting_date = escape($row['meeting_date']);
+        $formatted_meeting_date = date("j F Y", strtotime($meeting_date));
         $start_time = escape($row['start_time']);
+        $formatted_start_time = date("g:i A", strtotime($start_time));
         $meeting_status = escape($row['meeting_status']);
         $meeting_id = generateMeetingId($meeting_date, $start_time);
 
@@ -100,10 +102,10 @@ function getPendingMeetings()
             <td class='text-dark text-center'>$meeting_id</td>
             <td class='text-dark text-center'>$applicant_name</td>
             <td class='text-dark text-center'>$applicant_designation</td>
-            <td class='text-dark text-center'>$meeting_date</td>
-            <td class='text-dark text-center'>$start_time</td>
+            <td class='text-dark text-center'>$formatted_meeting_date</td>
+            <td class='text-dark text-center'>$formatted_start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
-            <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
+            <td width='5%'><a href='request_details.php?r_id={$id}' class='btn btn-info'>VIEW</a></td>
           </tr>";
 
     }
@@ -123,7 +125,9 @@ function getPreviousMeetings()
         $applicant_name = escape($row['applicant_name']);
         $applicant_designation = escape($row['designation']);
         $meeting_date = escape($row['meeting_date']);
+        $formatted_meeting_date = date("j F Y", strtotime($meeting_date));
         $start_time = escape($row['start_time']);
+        $formatted_start_time = date("g:i A", strtotime($start_time));
         $meeting_status = escape($row['meeting_status']);
         $meeting_id = generateMeetingId($meeting_date, $start_time);
 
@@ -132,10 +136,10 @@ function getPreviousMeetings()
             <td class='text-dark text-center'>$meeting_id</td>
             <td class='text-dark text-center'>$applicant_name</td>
             <td class='text-dark text-center'>$applicant_designation</td>
-            <td class='text-dark text-center'>$meeting_date</td>
-            <td class='text-dark text-center'>$start_time</td>
+            <td class='text-dark text-center'>$formatted_meeting_date</td>
+            <td class='text-dark text-center'>$formatted_start_time</td>
             <td class='text-dark text-center'>$meeting_status</td>
-            <td width='5%'><a href='request_details.php?m_status={$meeting_status}&r_id={$id}' class='btn btn-info'>VIEW</a></td>
+            <td width='5%'><a href='request_details.php?r_id={$id}' class='btn btn-info'>VIEW</a></td>
         </tr>";
     }
 

@@ -273,22 +273,24 @@
               </div>
             </div>
           </div>
+            <form action="" method="post" enctype="multipart/form-data">
+              <?php
 
-          <?php
+              echo "<input class='btn btn-danger' type='submit' name='delete_request' value='Delete'></input>";
+              echo " ";
+              echo "<input class='btn btn-success' type='submit' name='approve_request' value='Approve'></input>";
 
-          echo "<a class='btn btn-danger' href='meetings.php?delete={$id}'>Delete</a>";
-          echo " ";
-          echo "<a class='btn btn-success' href='meetings.php?approve={$id}'>Approve</a>";
-
-          ?>
+              ?>
+          </form>
         </div>
     </div>
 
     <?php
 
-    if (isset($_GET['approve'])) {
 
-      $r_id = mysqli_real_escape_string($connection, $_GET['approve']);
+    if (isset($_POST['approve_request'])) {
+
+      $id = $_GET['r_id'];
 
       $start_dateTime = $meeting_date . " " . $start_time;
       $end_dateTime = $meeting_date . " " . $end_tmie;
@@ -299,29 +301,30 @@
 
       confirmQuery($insert_schedule);
 
-      $meeting_query = "UPDATE meetings SET meeting_status = 'approved' WHERE comment_id = {$id} ";
+      $meeting_query = "UPDATE meetings SET meeting_status = 'approved' WHERE id = {$id} ";
       $approve_query = mysqli_query($connection, $meeting_query);
 
       confirmQuery($approve_query);
 
 
-      header("Location: comments.php");
+      header("Location: meetings.php?source=pending_requests");
 
     }
 
 
-    // if (isset($_GET['delete'])) {
-    
-    //   $comment_id = mysqli_real_escape_string($connection, $_GET['delete']);
-    
-    //   $query = "DELETE FROM comments WHERE comment_id = {$comment_id} ";
-    //   $delete_query = mysqli_query($connection, $query);
-    
-    //   confirmQuery($delete_query);
-    
-    //   header("Location: comments.php");
-    // }
-    
+    if (isset($_POST['delete_request'])) {
+
+      $id = $_GET['r_id'];
+
+      $query = "DELETE FROM meetings WHERE id = {$id} ";
+      $delete_query = mysqli_query($connection, $query);
+
+      confirmQuery($delete_query);
+
+      header("Location: meetings.php?source=pending_requests");
+
+    }
+
     ?>
 
 
