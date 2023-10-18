@@ -19,6 +19,13 @@
             <span>Dashboard</span></a>
     </li>
 
+    <!-- Nav Item - Calendar -->
+    <li class="nav-item active">
+        <a class="nav-link" href="../calendar/index.php">
+            <i class="fas fa-fw fa-calendar"></i>
+            <span>Calendar</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

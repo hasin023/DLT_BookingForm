@@ -57,7 +57,7 @@ if (isset($connection))
             </div>
             <div class="modal-footer rounded-0">
                 <div class="text-end">
-                    <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Delete</button>
+                    <!-- <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete" data-id="">Delete</button> -->
                     <button type="button" class="btn btn-secondary btn-sm rounded-0" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
