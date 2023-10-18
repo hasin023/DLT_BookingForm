@@ -21,9 +21,6 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Meetings</h1>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum voluptas autem blanditiis molestiae iusto, debitis commodi repellendus aliquid vero.</p>
 
 
                     <!-- Add Tables -->

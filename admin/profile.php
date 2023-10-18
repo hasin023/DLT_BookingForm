@@ -17,6 +17,14 @@
                 <?php include("includes/admin_topbar.php"); ?>
                 <!-- End of Topbar -->
 
+<?php
+  // session_start();
+  $email = $_SESSION['email'];
+  $fname = $_SESSION['first_name'];
+  $lname = $_SESSION['last_name'];
+  $role = $_SESSION['role'];
+  $department = $_SESSION['department'];
+?>
 
 
 <div class="container">
@@ -28,9 +36,8 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img  src="img/userIcon.png" alt="Admin Image" class="img-profile rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>Random User</h4>
-                      <p class="text-secondary mb-1">Full Stack Developer</p>
-                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                      <h4><?php echo $fname . ' ' . $lname ?></h4>
+                      <p class="text-secondary mb-1"><?php echo $role ?></p>
                     </div>
                   </div>
                 </div>
@@ -44,7 +51,7 @@
                       <h6 class="mb-0">First Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Random
+                      <?php echo $fname ?>
                     </div>
                   </div>
                   <hr>
@@ -53,16 +60,7 @@
                       <h6 class="mb-0">Last Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      User
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row mb-3">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Username</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    randomUser123
+                      <?php echo $lname ?>
                     </div>
                   </div>
                   <hr>
@@ -71,7 +69,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    randomuser@yahoo.com
+                    <?php echo $email ?>
                     </div>
                   </div>
                   <hr>
@@ -80,7 +78,7 @@
                       <h6 class="mb-0">Role</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    Lecturer
+                    <?php echo $role ?>
                     </div>
                   </div>
                 </div>

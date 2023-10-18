@@ -169,7 +169,7 @@ function getAllFaculty()
             <td class='text-dark text-center'>$department</td>
             <td class='text-dark text-center'>$email</td>
             <td class='text-dark text-center'>$role</td>
-            <td width='5%'><a href='faculty.php?source=edit_faculty&f_id={$id}' class='btn btn-warning'>EDIT</a></td>
+            <td width='5%'><a href='faculty.php?source=edit_faculty&f_id={$id}' class='btn btn-danger'>EDIT</a></td>
             
           </tr>";
 
