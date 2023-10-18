@@ -1,3 +1,17 @@
+<?php
+
+  $mail_ict = 'tahsinislam@iut-dhaka.edu';
+  $mail_engineering = 'tahsinrayshad.2016@gmail.com';
+  $mail_cafeteria = 'tahsin11rayshad@gmail.com';
+  $mail_visual = 'adibsakhawats@gmail.com';
+
+  $mail_m_date = '';
+  $mail_m_time = '';
+?>
+
+
+
+
 <?php include("includes/admin_header.php"); ?>
 
     <!-- Page Wrapper -->
@@ -23,6 +37,13 @@
                 $id = $_GET['r_id'];
                 $m_status = $_GET['m_status'];
               }
+              else if(isset($_GET['r_id'])){
+                $id = $_GET['r_id'];
+                $m_status = "pending";
+              }
+              else{
+                header("Location: ../admin");
+              }
 
               $query = "SELECT * FROM meetings WHERE id = {$id}";
               $select_meetings = mysqli_query($connection, $query);
@@ -38,7 +59,9 @@
                 // MEETING DETAILS
                 $meeting_date = escape($row['meeting_date']);
                 $formatted_meeting_date = date("j F Y", strtotime($meeting_date));
+                $mail_m_date = date("j F Y", strtotime($meeting_date));
                 $start_time = escape($row['start_time']);
+                $mail_m_time = escape($row['start_time']);
                 $end_tmie = escape($row['end_time']);
                 $booked_time = date("g:i A", strtotime($start_time)) . " to " . date("g:i A", strtotime($end_tmie));
                 $meeting_purpose = escape($row['details']);
@@ -232,7 +255,7 @@
                     ?>
                     </div>
                   </div>
-                  <form>
+                  <form action = "sent.php" method = "post">
                     <hr>
                     <h5 class="mb-4 text-danger">Fill out by Library and Documentation Office</h5>
                     <div class="row mb-3">
@@ -241,21 +264,25 @@
                       </div>
                       <div class="col-sm-9 text-secondary">
                         <label class="mr-3">
-                            <input type="checkbox" name="step" value="ict">
+                            <input type="checkbox" name="step_ict" value="<?php echo $mail_ict?>">
                             Copy to the ICT Centre
                         </label>
                         <label class="mr-3">
-                            <input type="checkbox" name="step" value="engineering">
+                            <input type="checkbox" name="step_engi" value="<?php echo $mail_engineering?>">
                             Copy to the Engineering Office
                         </label>
                         <label class="mr-3">
-                            <input type="checkbox" name="step" value="committee">
+                            <input type="checkbox" name="step_cafe" value="<?php echo $mail_cafeteria?>">
                             Copy to the Chairman, Cafeteria Committee
                         </label>
                         <label class="mr-3">
-                            <input type="checkbox" name="step" value="visual">
+                            <input type="checkbox" name="step_visu" value="<?php echo $mail_visual?>">
                             Copy to the Audio Visual Instructor for Official Coverage
                         </label>
+                        <br>
+                        <input class = "" type="text" value = "<?php echo $mail_m_date?>" name = "mdate" readonly>
+                        <input class = "" type="text" value = "<?php echo $mail_m_time?>" name = "mtime" readonly>
+                        <input class = "" type="text" value = "<?php echo $_GET['r_id']?>" name = "mid" readonly>
                       </div>
                     </div>
 
@@ -281,11 +308,12 @@
               </div>
             </div>
           </div>
+          
+
             <form action="" method="post" enctype="multipart/form-data">
               <?php
 
               if ($m_status == 'pending') {
-
                 echo "<input class='btn btn-danger' type='submit' name='delete_request' value='Delete'></input>";
                 echo " ";
                 echo "<input class='btn btn-success' type='submit' name='approve_request' value='Approve'></input>";
@@ -294,7 +322,6 @@
               } else {
 
               }
-
               ?>
           </form>
         </div>
@@ -323,6 +350,8 @@
 
 
       header("Location: meetings.php?source=pending_requests");
+
+
 
     }
 

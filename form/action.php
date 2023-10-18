@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // select the email of admin from faculty table
-    $sql = "SELECT email FROM faculty WHERE role = 'admin'";
+    $sql = "SELECT email FROM faculty WHERE role = 'admin' OR role = 'moderator'";
     $result = $connection->query($sql);
     while($row = $result->fetch_assoc()){
         $admin_email = $row['email'];

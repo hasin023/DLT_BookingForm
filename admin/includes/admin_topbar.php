@@ -1,4 +1,10 @@
- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<style>
+    .sh-bg-purp{
+        background-color: #17001c;
+    }
+
+</style>
+ <nav class="navbar navbar-expand navbar-light sh-bg-purp topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -8,8 +14,8 @@
     <!-- Topbar -->
     <div
         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
-        <div class="text-green">
-            <h2>Distance Learning Theatre (DLT)</h4>
+        <div class="text-light" style = "font-family: 'poppins', sans sherif">
+            <h5>Islamic University of Technology</h5>
         </div>
     </div>
 

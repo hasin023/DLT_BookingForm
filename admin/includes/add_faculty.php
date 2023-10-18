@@ -67,6 +67,7 @@ if (isset($_POST['add_faculty'])) {
                                 <select class="form-select mt-3" style="height: 60px;" name="role" required>
                                     <option selected disabled value="">Role <span class="text-danger">*</span></option>
                                     <option value="admin">Admin</option>
+                                    <option value="moderator">Moderator</option>
                                     <option value="head">Head</option>
                                     <option value="faculty">Faculty Member</option>
                                     <option value="AdminStuff">Administrative Stuff</option>

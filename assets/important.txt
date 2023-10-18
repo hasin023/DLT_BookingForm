@@ -1,0 +1,7 @@
+Allowd roles
+
+admin
+moderator
+head
+faculty
+AdminStuff

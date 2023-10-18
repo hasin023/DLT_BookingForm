@@ -1,4 +1,15 @@
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<!-- <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar"> -->
+<style>
+.sh-bg-d{
+    background: rgb(23,0,28);
+    background: -moz-linear-gradient(195deg, rgba(23,0,28,1) 34%, rgba(69,9,121,0.9976365546218487) 71%, rgba(144,35,219,1) 100%);
+    background: -webkit-linear-gradient(195deg, rgba(23,0,28,1) 34%, rgba(69,9,121,0.9976365546218487) 71%, rgba(144,35,219,1) 100%);
+    background: linear-gradient(195deg, rgba(23,0,28,1) 34%, rgba(69,9,121,0.9976365546218487) 71%, rgba(144,35,219,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#17001c",endColorstr="#9023db",GradientType=1);
+}
+</style>
+
+<ul class="navbar-nav sh-bg-d sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -6,7 +17,7 @@
             <!-- <i class="fas fa-fw fa-lock"></i> -->
             <!-- <img style="width: 35px; height: auto;" src="../iutlogo/IUTLogo.png"/> -->
         </div>
-        <div class="sidebar-brand-text mx-3">Admin</div>
+        <div class="sidebar-brand-text mx-3">DLT Admin</div>
     </a>
 
     <!-- Divider -->
@@ -24,6 +35,13 @@
         <a class="nav-link" href="../calendar/index.php">
             <i class="fas fa-fw fa-calendar"></i>
             <span>Calendar</span></a>
+    </li>
+
+    <!-- Nav Item - New Meeting -->
+    <li class="nav-item active">
+        <a class="nav-link" href="../form/">
+            <i class="fas fa-fw fa-pen"></i>
+            <span>Book Meeting</span></a>
     </li>
 
     <!-- Divider -->
@@ -52,14 +70,14 @@
     <!-- Nav Item - Pending Requests -->
     <li class="nav-item">
         <a class="nav-link" href="meetings.php?source=pending_requests">
-            <i class="fas fa-fw fa-pen"></i>
+            <i class="fas fa-fw fa-clock"></i>
             <span>Pending Requests</span></a>
     </li>
 
     <!-- Nav Item - Previous Meetings -->
     <li class="nav-item">
         <a class="nav-link" href="meetings.php?source=previous_meetings">
-            <i class="fas fa-fw fa-clock"></i>
+            <i class="fas fa-fw fa-eye"></i>
             <span>Previous Meetings</span></a>
     </li>
 

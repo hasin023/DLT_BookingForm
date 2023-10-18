@@ -1,5 +1,17 @@
 <?php ob_start(); ?>
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+
+    if(!isset($_SESSION['role'])){
+        header("Location: ../login/");
+    }
+    else{
+        if($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'moderator'){
+            header("Location: ../dashboard/");
+        }
+    }
+
+?>
 <?php include("connection.php"); ?>
 <?php include("functions.php"); ?>
 

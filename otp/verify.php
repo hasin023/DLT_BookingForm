@@ -31,8 +31,12 @@
                 echo "Database error: " . mysqli_error($connection);
             }
 
-
-            header("Location: ../dashboard/");
+            if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'moderator'){
+                header("Location: ../admin/");
+            }
+            else{
+                header("Location: ../dashboard/");
+            }
         }else{
             header("Location: ../otp/?status=wrong");
         }
