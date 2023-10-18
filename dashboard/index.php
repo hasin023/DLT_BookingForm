@@ -1,10 +1,19 @@
+
+<style>
+    .s-w{
+        background-color: #f0af0c;
+        color: black;
+    }
+</style>
+
+
 <?php
     require_once "../connection.php";
     session_start();
     if(isset($_SESSION["email"])){
         //okay login confirmed
         $this_email = $_SESSION["email"];
-        $sql = "SELECT meeting_date, start_time, end_time, meeting_status 
+        $sql = "SELECT meeting_date, start_time, end_time, meeting_status, details 
         FROM `meetings` 
         WHERE applicant_name = '$this_email' 
         AND CONCAT(meeting_date, ' ', start_time) > NOW()";
@@ -16,8 +25,9 @@
             $mstart = $row['start_time'];
             $mstatus = $row['meeting_status'];
             $mclass = "";
+            $mdetails = $row['details'];
             if($mstatus == "pending"){
-                $mclass = "bg-warning";
+                $mclass = "s-w";
             }
             else if($mstatus == "approved"){
                 $mclass = "bg-success";
@@ -32,10 +42,10 @@
                                         <div class="col-md-8">
                                             <p>Date : '. $mdate .'</p>
                                             <p>Time : '. $mstart .' </p>
-                                            <p><span class="badge '. $mclass .'">' . $mstatus . '</span></p>
+                                            <p>Details : '. $mdetails .'</p>
                                         </div>
-                                        <div class="col-md-4 mt-md-0 mt-3 d-flex justify-content-center align-items-center">
-                                            <a href="#" class="btn btn-secondary">Details</a>
+                                        <div class="col-md-4 mt-md-0 mt-5 d-flex justify-content-center align-items-center">
+                                            <h3 class = "mt-3"><span class="badge '. $mclass .'">' . $mstatus . '</span></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -115,32 +125,42 @@
 </div>    
 
 <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-12 col-12">
-                <div class="card">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-9">
-                                <h3 class="mt-3">Application Status</h3>
-                            </div>
-                            <div class="col-md-3 col-12">
-                                <a href="../form" class = "btn btn-success mt-3">Book a new meeting</a>
-                            </div>
-                            <div class="mt-3"></div>
-                            <hr>
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="../calendar/" class = "btn btn-primary" style = "width = 100%">View Calender</a>
+        </div>
+    </div>
+</div>
 
-                            <?php
-                                echo $element;
-                            ?>
-                            
-                            
-                            
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12 col-12">
+            <div class="card">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-9">
+                            <h3 class="mt-3">Application Status</h3>
                         </div>
+                        <div class="col-md-3 col-12 text-md-right">
+                            <a href="../form" class="btn btn-success mt-3">Book a new meeting</a>
+                        </div>
+                        <div class="mt-3"></div>
+                        <hr>
+
+                        <?php
+                            echo $element;
+                        ?>
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
 
 
 
