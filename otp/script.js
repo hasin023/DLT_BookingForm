@@ -1,6 +1,6 @@
 var hh = 0;
-var mm = 0;
-var ss = 10;
+var mm = 1;
+var ss = 59;
 let timeface = document.getElementById("timeface");
 let timer = null;
 
@@ -21,10 +21,10 @@ document.getElementById("startBtn").addEventListener("click", function(event) {
         hh = 0;
     }
     if(minuteInput >= 0){
-        mm = 0;
+        mm = 1;
     }
     if(secondInput >=0){
-        ss = 10;
+        ss = 59;
     }
 });
 

@@ -44,6 +44,10 @@
     <link href="css/admin.min.css" rel="stylesheet">
     <link href="css/customCss.css" rel="stylesheet">
 
+    <!-- PDF generator -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+
 </head>
 
 <body id="page-top">

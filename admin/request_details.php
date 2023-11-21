@@ -14,6 +14,7 @@
 
 <?php include("includes/admin_header.php"); ?>
 
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -146,7 +147,7 @@
           <div class="row gutters-sm">
             <div class="col-md-12">
               <div class="card mb-3">
-                <div class="card-body">
+                <div class="card-body" id = "meet-doc">
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Applicant Email</h6>
@@ -255,6 +256,8 @@
                     ?>
                     </div>
                   </div>
+                </div>
+                <div class="card-body">
                   <form action = "sent.php" method = "post">
                     <hr>
                     <h5 class="mb-4 text-danger">Fill out by Library and Documentation Office</h5>
@@ -309,7 +312,7 @@
             </div>
           </div>
           
-
+          
             <form action="" method="post" enctype="multipart/form-data">
               <?php
 
@@ -324,9 +327,11 @@
               }
               ?>
           </form>
+          <button class="btn btn-dark mt-5 mb-5" id = "download">Download Details</button>
         </div>
+        
     </div>
-
+    
     <?php
 
 
@@ -398,3 +403,17 @@
 
 <!-- Footer -->
 <?php include("includes/admin_footer.php"); ?>
+
+<script>
+document.getElementById('download').addEventListener('click', function() {
+    var element = document.getElementById('meet-doc');
+    var opt = {
+        margin: 1,
+        filename: 'myfile.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+});
+</script>

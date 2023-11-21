@@ -11,6 +11,11 @@
                         </div>';
         }
     }
+
+    session_start();
+    if (isset($_SESSION["email"])) {
+        header("Location: ../dashboard/");
+    }
 ?>
 
 
@@ -53,6 +58,10 @@
                             <button type="submit" class="btn btn-warning" id="next_card" style="width: 100%;">Send OTP</button>
                         </div>
                     </form>
+                    <hr>
+                    <div class="mt-2 mb-2 d-flex justify-content-center align-items-center">
+                        <a href="../" class="btn btn-light">Back to Home</a>
+                    </div>
                 </div>
             </div>
         </div>

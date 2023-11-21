@@ -142,7 +142,7 @@
                             <h3 class="mt-3">Application Status</h3>
                         </div>
                         <div class="col-md-3 col-12 text-md-right">
-                            <a href="../form" class="btn btn-success mt-3">Book a new meeting</a>
+                            <a href="../form" class="btn btn-success mt-3">Meeting Booking Form</a>
                         </div>
                         <div class="mt-3"></div>
                         <hr>

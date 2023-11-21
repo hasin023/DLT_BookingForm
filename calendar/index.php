@@ -17,11 +17,24 @@ if (isset($connection))
     $connection->close();
 ?>
 
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient" id="topNavBar">
-    <div class="container d-flex justify-content-center">
+    <!-- <div class="container d-flex justify-content-center">
         <div class="row">
             <div class="col-md-12">
                 <a class="navbar-brand title" href="#">Booked Meetings</a>
+            </div>
+        </div>
+    </div> -->
+    <div class="container d-flex justify-content-center mb-3">
+        <div class="row sh-menu-row">
+            <div class="sh-menu col-12">
+                <ul>
+                    <li><a href="../"><i class="uil uil-home"></i> Home</a></li>
+                    <li><a href="../login/"><i class="uil uil-pen"></i> Book A Meeting</a></li>
+                </ul>
             </div>
         </div>
     </div>
