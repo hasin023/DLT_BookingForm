@@ -53,7 +53,7 @@
                     <hr>
                     <p class="pop">Welcome to the Distance Learning Theatre of Islamic University of Technology. Here you can book meetings in DLT. You can also find the schedule of meetings in the calendar section.</p>
                     <div class="hstack gap-3">
-                        <div class="p-2"><a href="" class="btn btn-outline-success"><i class="uil uil-edit"></i> Book a New Meeting</a></div>
+                        <div class="p-2"><a href="#login" class="btn btn-outline-success"><i class="uil uil-edit"></i> Book a New Meeting</a></div>
                         <div class="p-2"><a href="" class="btn btn-outline-success"><i class="uil uil-calender"></i> View Calender</a></div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <div class="container" style="min-height: 60vh;">
+    <div class="container" id="login" style="min-height: 60vh;">
         <div class="row mt-5">
             <div class="col-12">
                 <h2 class="jb">Please <b class="text-success">login</b> to book new meeting</h2>
@@ -70,9 +70,20 @@
                 <hr>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                
+        <div class="row mt-1">
+            <div class="col-md-4 mt-4 offset-md-1">
+                <form action="otp/" method="post">
+                    <div class="card-2 mt-5" id="mail_card">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="email" class="form-control bs" id="floatingInput" name = "email" placeholder="name@example.com" required>
+                            <label for="floatingInput"><i class="uil uil-envelope-alt"></i> Enter Your Email Address</label>
+                        </div>
+                        <button type="submit" class="bs btn btn-success" id="next_card" style="width: 100%;">Send OTP</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-7 mail mt-4">
+                <img src="iutlogo/mail.svg" alt="" style="width: 300px;">
             </div>
         </div>
     </div>
@@ -91,6 +102,12 @@
         justify-content: center;
     }
 
+    .mail{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .pop{
         font-family:'poppins', sans-serif;
     }
@@ -105,5 +122,9 @@
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
+    }
+
+    .bs{
+        box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
     }
 </style>
