@@ -95,3 +95,108 @@
     /* background-color: #005c00; */
     padding: 0.5rem;
 }
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
+
+.jb{
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.html, body{
+    scroll-behavior: smooth;
+}
+
+.course-finder{
+    /* padding: 20px; */
+    /* box-shadow: 0px 0px 10px rgba(0,0,0,0.5); */
+    border-radius: 10px;
+    width: 70%;
+}
+
+
+
+.foot{
+    background: rgb(238, 238, 238);
+    min-height: 28vh;
+}
+
+.bs{
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+}
+
+
+
+
+
+
+
+
+
+
+/* Formaters */
+
+.vh-100{
+    min-height: 100vh;
+}
+
+.vh-90{
+    min-height: 90vh;
+}
+
+.vh-80{
+    min-height: 80vh;
+}
+
+.vh-70{
+    min-height: 70vh;
+}
+
+.vh-65{
+    min-height: 65vh;
+}
+
+.vh-60{
+    min-height: 60vh;
+}
+
+.vh-50{
+    min-height: 50vh;
+}
+
+.vh-40{
+    min-height: 40vh;
+}
+
+.vh-30{
+    min-height: 30vh;
+}
+
+.vh-20{
+    min-height: 20vh;
+}
+
+.vh-10{
+    min-height: 10vh;
+}
+
+.df{
+    display: flex;
+}
+
+.dfc{
+    display: flex;
+    flex-direction: column;
+}
+
+.jc-c{
+    justify-content: center;
+}
+
+.ai-c{
+    align-items: center;
+}
