@@ -1,7 +1,7 @@
 <?php
     session_start();
     $db = '<li class="nav-item">
-                <a class="nav-link" href="calendar/"><i class="uil uil-meeting-board"></i> Dashboard</a>
+                <a class="nav-link" href="dashboard/"><i class="uil uil-meeting-board"></i> Dashboard</a>
             </li>';
 
     $log = '<li class="nav-item">

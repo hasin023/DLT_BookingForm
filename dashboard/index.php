@@ -6,10 +6,29 @@
     }
 </style>
 
+<?php
+    session_start();
+    $dbm = '<li class="nav-item">
+                <a class="nav-link active link-dark" href="#"><i class="uil uil-meeting-board"></i> Dashboard</a>
+            </li>';
+
+    $log = '<li class="nav-item">
+                <a class="nav-link link-dark" href="../#login"><i class="uil uil-mountains-sun"></i> Login</a>
+            </li>';
+
+    $lout = '<li class="nav-item">
+                <a class="nav-link link-dark" href="../logout.php"><i class="uil uil-mountains-sun"></i> Logout</a>
+            </li>';
+
+    $yes = false;
+    if (isset($_SESSION["email"])) {
+        $yes = true;
+    }
+?>
+
 
 <?php
     require_once "../connection.php";
-    session_start();
     if(isset($_SESSION["email"])){
         //okay login confirmed
         $this_email = $_SESSION["email"];
@@ -100,7 +119,40 @@
     </style>
 </head>
 <body>
-
+<!-- Header Start -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary bs">
+        <div class="container">
+          <a class="navbar-brand" href="#"><span class="badge bg-primary">IUT DLT</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link link-dark" aria-current="page" href="../"><i class="uil uil-estate"></i> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-dark" href="../calendar/"><i class="uil uil-calender"></i> Calender</a>
+              </li>
+              <?php
+                if (isset($_SESSION["email"])) {
+                    echo $dbm;
+                }
+                ?>
+            </ul>
+            <ul class="navbar-nav mt-auto mb-2 mb-lg-0">
+              <?php
+                if (isset($_SESSION["email"])) {
+                    echo $lout;
+                }else{
+                    echo $log;
+                }
+                ?>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- Header End -->
 <div class="container mt-5 card-3">
     <div class="row">
         <div class="col-10 offset-md-1">
@@ -123,14 +175,6 @@
         </div>
     </div>
 </div>    
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-12 text-center">
-            <a href="../calendar/" class = "btn btn-primary" style = "width = 100%">View Calender</a>
-        </div>
-    </div>
-</div>
 
 <div class="container mt-5">
     <div class="row">
@@ -166,3 +210,9 @@
 
 </body>
 </html>
+
+<style>
+    .bs{
+        box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    }
+</style>

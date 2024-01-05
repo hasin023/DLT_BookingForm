@@ -18,15 +18,15 @@ if (isset($connection))
 
     session_start();
     $db = '<li class="nav-item">
-                <a class="nav-link link-dark" href="calendar/"><i class="uil uil-meeting-board"></i> Dashboard</a>
+                <a class="nav-link link-dark" href="../dashboard"><i class="uil uil-meeting-board"></i> Dashboard</a>
             </li>';
 
     $log = '<li class="nav-item">
-                <a class="nav-link link-dark" href="#login"><i class="uil uil-mountains-sun"></i> Login</a>
+                <a class="nav-link link-dark" href="../#login"><i class="uil uil-mountains-sun"></i> Login</a>
             </li>';
 
     $lout = '<li class="nav-item">
-                <a class="nav-link link-dark" href="logout.php"><i class="uil uil-mountains-sun"></i> Logout</a>
+                <a class="nav-link link-dark" href="../logout.php"><i class="uil uil-mountains-sun"></i> Logout</a>
             </li>';
 
     $yes = false;
