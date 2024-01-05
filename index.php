@@ -37,6 +37,12 @@
                         <ul>
                             <li><a href="calendar/"><i class="uil uil-calendar-alt"></i> View Calender</a></li>
                             <li><a href="login/"><i class="uil uil-pen"></i> Book A Meeting</a></li>
+                            <?php
+                                session_start();
+                                if (isset($_SESSION["email"])) {
+                                    echo '<li><a href="admin/"><i class="uil uil-airplay"></i> Dashboard</a></li>';
+                                }
+                            ?>
                         </ul>
                     </div>
                 </div>
