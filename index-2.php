@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    $db = '<li class="nav-item">
+                <a class="nav-link" href="calendar/"><i class="uil uil-meeting-board"></i> Dashboard</a>
+            </li>';
+
+    $log = '<li class="nav-item">
+                <a class="nav-link" href="#login"><i class="uil uil-mountains-sun"></i> Login</a>
+            </li>';
+
+    $lout = '<li class="nav-item">
+                <a class="nav-link" href="logout.php"><i class="uil uil-mountains-sun"></i> Logout</a>
+            </li>';
+
+    $yes = false;
+    if (isset($_SESSION["email"])) {
+        $yes = true;
+    }
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +43,9 @@
 </head>
 <body>
     <!-- Header Start -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bs fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#">IUT DLT</a>
+          <a class="navbar-brand" href="#"><span class="badge bg-primary">IUT DLT</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -34,11 +57,20 @@
               <li class="nav-item">
                 <a class="nav-link" href="calendar/"><i class="uil uil-calender"></i> Calender</a>
               </li>
+              <?php
+                if (isset($_SESSION["email"])) {
+                    echo $db;
+                }
+                ?>
             </ul>
             <ul class="navbar-nav mt-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#login"><i class="uil uil-mountains-sun"></i> Login</a>
-              </li>
+              <?php
+                if (isset($_SESSION["email"])) {
+                    echo $lout;
+                }else{
+                    echo $log;
+                }
+                ?>
             </ul>
           </div>
         </div>
@@ -54,7 +86,7 @@
                     <p class="pop">Welcome to the Distance Learning Theatre of Islamic University of Technology. Here you can book meetings in DLT. You can also find the schedule of meetings in the calendar section.</p>
                     <div class="hstack gap-3">
                         <div class="p-2"><a href="#login" class="btn btn-outline-success"><i class="uil uil-edit"></i> Book a New Meeting</a></div>
-                        <div class="p-2"><a href="" class="btn btn-outline-success"><i class="uil uil-calender"></i> View Calender</a></div>
+                        <div class="p-2"><a href="calendar/" class="btn btn-outline-success"><i class="uil uil-calender"></i> View Calender</a></div>
                     </div>
                 </div>
             </div> 
@@ -75,10 +107,10 @@
                 <form action="otp/" method="post">
                     <div class="card-2 mt-5" id="mail_card">
                         <div class="form-floating mb-3 mt-3">
-                            <input type="email" class="form-control bs" id="floatingInput" name = "email" placeholder="name@example.com" required>
+                            <input type="email" class="form-control bs" id="floatingInput" name = "email" placeholder="name@example.com" required <?php if($yes==true){echo "readonly";} ?>>
                             <label for="floatingInput"><i class="uil uil-envelope-alt"></i> Enter Your Email Address</label>
                         </div>
-                        <button type="submit" class="bs btn btn-success" id="next_card" style="width: 100%;">Send OTP</button>
+                        <button type="submit" class="bs btn btn-success <?php if($yes==true){echo "disabled";} ?>" id="next_card" style="width: 100%;">Send OTP</button>
                     </div>
                 </form>
             </div>
@@ -95,7 +127,7 @@
 
 <style>
     .home-1{
-        min-height: 91vh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         /* align-items: center; */
