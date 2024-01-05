@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    $db = '<li class="nav-item">
+                <a class="nav-link" href="calendar/"><i class="uil uil-meeting-board"></i> Dashboard</a>
+            </li>';
+
+    $log = '<li class="nav-item">
+                <a class="nav-link" href="#login"><i class="uil uil-mountains-sun"></i> Login</a>
+            </li>';
+
+    $lout = '<li class="nav-item">
+                <a class="nav-link" href="logout.php"><i class="uil uil-mountains-sun"></i> Logout</a>
+            </li>';
+
+    $yes = false;
+    if (isset($_SESSION["email"])) {
+        $yes = true;
+    }
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,121 +28,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IUT DLT</title>
 
-    <!-- Bootstrap 5.3 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-    <!-- Style -->
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <!-- Icons -->
+    <link rel="icon" href="iutlogo/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="iutlogo/logo.ico" type="image/x-icon">   
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    <!-- Custom CSS & JS-->
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row" style="background: #004B49;">
-            <div class="col-md-3 col-6 d-none d-md-flex justify-content-center align-items-center mt-3">
-                <img src="iutlogo/IUT_logo_v_1.png" style="width: 70px;" class="logo">
-            </div>
-            <div class="col-12 col-md-6 tr-frhd mt-3 text-center" style="color: azure;">
-                <h2>Islamic University of Technology</h2>
-                <h4>Library and Documentation Office</h4>
-                <h5>Distance Learning Theatre (DLT)</h5>
-                <hr>
-            </div>
-            <div class="col-md-3 col-6 d-none d-md-flex justify-content-center align-items-center mt-3">
-                <img src="iutlogo/oic.png" style="width: 90px;" class="logo">
-            </div>
-            <div class="container mb-3">
-                <div class="row sh-menu-row" style="background: #00201f5e;">
-                    <div class="sh-menu col-12 d-flex justify-content-center align-items-center">
-                        <ul>
-                            <li><a href="calendar/"><i class="uil uil-calendar-alt"></i> View Calender</a></li>
-                            <li><a href="login/"><i class="uil uil-pen"></i> Book A Meeting</a></li>
-                            <?php
-                                session_start();
-                                if (isset($_SESSION["email"])) {
-                                    echo '<li><a href="admin/"><i class="uil uil-airplay"></i> Dashboard</a></li>';
-                                }
-                            ?>
-                        </ul>
+    <!-- Header Start -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bs fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#"><span class="badge bg-primary">IUT DLT</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"><i class="uil uil-estate"></i> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="calendar/"><i class="uil uil-calender"></i> Calender</a>
+              </li>
+              <?php
+                if (isset($_SESSION["email"])) {
+                    echo $db;
+                }
+                ?>
+            </ul>
+            <ul class="navbar-nav mt-auto mb-2 mb-lg-0">
+              <?php
+                if (isset($_SESSION["email"])) {
+                    echo $lout;
+                }else{
+                    echo $log;
+                }
+                ?>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- Header End -->
+    <div class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 home-1">
+                    <h5><span class="badge jb bg-success">Islamic University of Technology</span></h5>
+                    <h2 class="pop">Distance Learning Theatre</h2>
+                    <hr>
+                    <p class="pop">Welcome to the Distance Learning Theatre of Islamic University of Technology. Here you can book meetings in DLT. You can also find the schedule of meetings in the calendar section.</p>
+                    <div class="hstack gap-3">
+                        <div class="p-2"><a href="#login" class="btn btn-outline-success"><i class="uil uil-edit"></i> Book a New Meeting</a></div>
+                        <div class="p-2"><a href="calendar/" class="btn btn-outline-success"><i class="uil uil-calender"></i> View Calender</a></div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item images active">
-                <img src="dltroomimages/front.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item images">
-                <img src="dltroomimages/leftcorner.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item images">
-                <img src="dltroomimages/rightcorner.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item images">
-                <img src="dltroomimages/frontcorner.jpg" class=" d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item images">
-                <img src="dltroomimages/frontangle.jpg" class=" d-block w-100" alt="...">
+
+    <div class="container" id="login" style="min-height: 60vh;">
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="jb">Please <b class="text-success">login</b> to book new meeting</h2>
+                <!-- <hr> -->
+                <p class="text-secondary">Enter your valid email address we will send you an OTP to your email address. with that OTP you can login to the system</p>
+                <hr>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    <br><br>
-    <div class="container mt-5 mb-2">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2>Distance Learning Theatre Facilities</h2>
+        <div class="row mt-1">
+            <div class="col-md-4 mt-4 offset-md-1">
+                <form action="otp/" method="post">
+                    <div class="card-2 mt-5" id="mail_card">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="email" class="form-control bs" id="floatingInput" name = "email" placeholder="name@example.com" required <?php if($yes==true){echo "readonly";} ?>>
+                            <label for="floatingInput"><i class="uil uil-envelope-alt"></i> Enter Your Email Address</label>
+                        </div>
+                        <button type="submit" class="bs btn btn-success <?php if($yes==true){echo "disabled";} ?>" id="next_card" style="width: 100%;">Send OTP</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-7 mail mt-4">
+                <img src="iutlogo/mail.svg" alt="" style="width: 300px;">
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <hr>
-        <div class="row mt-3">
-            <div class="col-md-4 d-inline-block">
-                <div class="box-card">Big Display</div>
-                <div class="box-card">Smart Board</div>
-                <div class="box-card">Projector</div>
-                <div class="box-card">Writing Board</div>
-                <div class="box-card">Microphone (Wireless/Handheld)</div>
-                <div class="box-card">Laptop</div>
-                
-            </div>
-            <div class="col-md-4 d-inline-block">
-                <div class="box-card">Photography</div>
-                <div class="box-card">WiFi</div>
-                <div class="box-card">Technical Person</div>
-                <div class="box-card">Zoom Support (inform at least 5 days earlier for BdREN technical support)</div>
-                <div class="box-card">Front Desk with Table Cloth</div>
-                <div class="box-card">Additional Chairs</div>
-            </div>
-            <div class="col-md-4 d-inline-block">
-                <div class="box-card">Flower with Vase</div>
-                <div class="box-card">Video Recording</div>
-                <div class="box-card">Cafeteria Arrangement [Food and Services are arranged by a particular Department/Office</div>
-                <div class="box-card">Own Arrangement by a Particular Department/Office (Food and Services are arranged by a particular Department/Office)</div>
-                <!-- <div class="box-card">Additional Chairs</div> -->
-            </div>
-        </div>
-    </div>
+
+    
 </body>
-</html>
+
+
+<style>
+    .home-1{
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: center;
+    }
+
+    .mail{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pop{
+        font-family:'poppins', sans-serif;
+    }
+
+    .jb{
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero{
+        background-image: url(dltroomimages/home-1.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .bs{
+        box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+    }
+</style>
